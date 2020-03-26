@@ -8,6 +8,7 @@ namespace University_Hospital_Management_System.ProjectForms
     {
         string selectedGender;
         string userType;
+        char isPractitionerOrResident;
 
         public RegistrationForm()
         {
@@ -20,7 +21,7 @@ namespace University_Hospital_Management_System.ProjectForms
         {
             if (CheckIfTextValid())
             {
-                OrclDatabase.RegisterNewUser(newName_txt.Text, newUserName_txt.Text, newPassword_txt.Text, specialty_comboBox.SelectedItem.ToString(), selectedGender);
+                OrclDatabase.RegisterNewUser(newName_txt.Text, newUserName_txt.Text, newPassword_txt.Text, specialty_comboBox.SelectedItem.ToString(), selectedGender, userType, isPractitionerOrResident);
                 this.Dispose();
                 this.Close();
             }
@@ -31,9 +32,28 @@ namespace University_Hospital_Management_System.ProjectForms
             selectedGender = ((RadioButton)sender).Text;
         }
 
+        private void IsPractitionerOrResident_CheckedChanged(object sender, EventArgs e)
+        {
+            isPractitionerOrResident = ((RadioButton)sender).Text[0];
+        }
+
         private void UserType_CheckedChanged(object sender, EventArgs e)
         {
             userType = ((RadioButton)sender).Text;
+
+            switch (userType)
+            {
+                case "Doctor":
+                    groupBox3.Visible = true;
+                    groupBox3.Text = "Resident?"; break;
+
+                case "Nurse":
+                    groupBox3.Visible = true;
+                    groupBox3.Text = "Practitioner?"; break;
+
+                default:
+                    groupBox3.Visible = false; break;
+            }
         }
 
         private bool CheckIfTextValid()
@@ -42,7 +62,8 @@ namespace University_Hospital_Management_System.ProjectForms
                 string.IsNullOrEmpty(newName_txt.Text) || string.IsNullOrWhiteSpace(newName_txt.Text) ||
                 string.IsNullOrEmpty(newUserName_txt.Text) || string.IsNullOrWhiteSpace(newUserName_txt.Text) ||
                 string.IsNullOrEmpty(newPassword_txt.Text) || string.IsNullOrWhiteSpace(newPassword_txt.Text) ||
-                string.IsNullOrEmpty(newConfirmedPassword_txt.Text) || string.IsNullOrWhiteSpace(newConfirmedPassword_txt.Text))
+                string.IsNullOrEmpty(newConfirmedPassword_txt.Text) || string.IsNullOrWhiteSpace(newConfirmedPassword_txt.Text) ||
+                specialty_comboBox.SelectedItem == null)
             {
                 MessageBox.Show("Data is missing.");
                 return false;

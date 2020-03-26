@@ -51,7 +51,7 @@ namespace University_Hospital_Management_System.ProjectClasses
         }
 
 
-        public static void RegisterNewUser(string name, string username, string password, string specialty, string gender)
+        public static void RegisterNewUser(string name, string username, string password, string specialty, string gender, string type, char isPractitionerOrResident)
         {
             OracleCommand cmd = new OracleCommand
             {
@@ -65,11 +65,13 @@ namespace University_Hospital_Management_System.ProjectClasses
             cmd.Parameters.Add("password", password);
             cmd.Parameters.Add("specialty", specialty);
             cmd.Parameters.Add("gender", gender);
-            int r = cmd.ExecuteNonQuery();
 
-            if (r != -1)
+            int registerQueryResult = cmd.ExecuteNonQuery();
+            int setTypeQueryResult = SetUserType(type, isPractitionerOrResident);
+
+            if (registerQueryResult != -1 && setTypeQueryResult != -1)
             {
-                MessageBox.Show("New user registered.");
+                MessageBox.Show($"New {type} registered.");
             }
             else
             {
@@ -77,9 +79,19 @@ namespace University_Hospital_Management_System.ProjectClasses
             }
         }
 
-        private void SetUserType()
+        private static int SetUserType(string type, char isPractitionerOrResident)
         {
+            OracleCommand cmd = new OracleCommand
+            {
+                Connection = conn,
+                CommandText = $"Insert INTO {type} VALUES (9, :YesOrNo); COMMIT;",
+                CommandType = CommandType.Text,
+            };
 
+            cmd.Parameters.Add("YesOrNo", isPractitionerOrResident);
+
+            int queryResult = cmd.ExecuteNonQuery();
+            return queryResult;
         }
     }
 }
