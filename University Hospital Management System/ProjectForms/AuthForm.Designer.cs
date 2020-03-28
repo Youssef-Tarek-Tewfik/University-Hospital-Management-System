@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label4 = new System.Windows.Forms.Label();
             this.registrationLabel = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.login_btn = new System.Windows.Forms.Button();
@@ -41,6 +44,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.registrationLabel);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.login_btn);
@@ -55,6 +61,39 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sign in";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(257, 190);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(86, 26);
+            this.radioButton2.TabIndex = 9;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Patient";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.UserType_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(166, 190);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(66, 26);
+            this.radioButton1.TabIndex = 8;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Staff";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.UserType_CheckedChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(47, 190);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 22);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Sign in as :";
             // 
             // registrationLabel
             // 
@@ -80,7 +119,7 @@
             // 
             // login_btn
             // 
-            this.login_btn.Location = new System.Drawing.Point(132, 190);
+            this.login_btn.Location = new System.Drawing.Point(121, 248);
             this.login_btn.Name = "login_btn";
             this.login_btn.Size = new System.Drawing.Size(122, 42);
             this.login_btn.TabIndex = 4;
@@ -90,6 +129,7 @@
             // 
             // password_txt
             // 
+            this.password_txt.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.password_txt.Location = new System.Drawing.Point(152, 126);
             this.password_txt.MaxLength = 50;
             this.password_txt.Name = "password_txt";
@@ -109,6 +149,7 @@
             // 
             // username_txt
             // 
+            this.username_txt.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.username_txt.Location = new System.Drawing.Point(152, 60);
             this.username_txt.MaxLength = 50;
             this.username_txt.Name = "username_txt";
@@ -151,6 +192,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel registrationLabel;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label4;
     }
 }
 

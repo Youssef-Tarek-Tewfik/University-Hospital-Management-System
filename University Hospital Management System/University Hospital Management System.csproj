@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProjectClasses\Doctor.cs" />
+    <Compile Include="ProjectClasses\Nurse.cs" />
+    <Compile Include="ProjectClasses\SystemPersona.cs" />
     <Compile Include="ProjectClasses\OrclDatabase.cs" />
     <Compile Include="ProjectForms\AuthForm.cs">
       <SubType>Form</SubType>
@@ -57,6 +60,12 @@
       <DependentUpon>AuthForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="ProjectForms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectForms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectForms\RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +75,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ProjectForms\AuthForm.resx">
       <DependentUpon>AuthForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectForms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectForms\RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
