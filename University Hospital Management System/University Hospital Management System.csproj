@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="ProjectClasses\Doctor.cs" />
     <Compile Include="ProjectClasses\Nurse.cs" />
+    <Compile Include="ProjectClasses\Patient.cs" />
     <Compile Include="ProjectClasses\SystemPersona.cs" />
     <Compile Include="ProjectClasses\OrclDatabase.cs" />
     <Compile Include="ProjectForms\AuthForm.cs">

@@ -11,7 +11,7 @@ namespace University_Hospital_Management_System.ProjectClasses
 {
     public class OrclDatabase
     {
-        private string oracleConnectionString = "Data Source=orcl; User ID=scott; Password=tiger;";
+        private readonly string oracleConnectionString = "Data Source=orcl; User ID=scott; Password=tiger;";
         public static OracleConnection conn;
 
         public OrclDatabase()
@@ -56,12 +56,12 @@ namespace University_Hospital_Management_System.ProjectClasses
         }
 
         // 3. Insert rows (without procedures)
-        public static void RegisterNewUser(string name, string username, string password, string specialty, string gender, string type, string isPractitionerOrResident)
+        public static void RegisterNewUser(string name, string username, string password, string specialty, string gender, string type, char isPractitionerOrResident)
         {
             OracleCommand cmd = new OracleCommand
             {
                 Connection = conn,
-                CommandText = "Insert INTO Staff VALUES (StaffIDSeq.nextval, :name, :username, :password, :specialty, :gender)",
+                CommandText = "INSERT INTO Staff VALUES (StaffIDSeq.nextval, :name, :username, :password, :specialty, :gender)",
                 CommandType = CommandType.Text,
             };
 
@@ -90,12 +90,12 @@ namespace University_Hospital_Management_System.ProjectClasses
         /// <param name="type"> The type of new registered user </param>
         /// <param name="isPractitionerOrResident"> Is the Doctor or Nurse a Practitioner or Resident or not respectively </param>
         /// <returns></returns>
-        private static int SetUserType(string type, string isPractitionerOrResident)
+        private static int SetUserType(string type, char isPractitionerOrResident)
         {
             OracleCommand cmd = new OracleCommand
             {
                 Connection = conn,
-                CommandText = $"Insert INTO {type} VALUES (StaffIDSeq.currval, :YesOrNo);",
+                CommandText = $"INSERT INTO {type} VALUES (StaffIDSeq.currval, :YesOrNo)",
                 CommandType = CommandType.Text,
             };
 

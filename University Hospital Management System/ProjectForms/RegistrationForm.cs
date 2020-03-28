@@ -8,13 +8,13 @@ namespace University_Hospital_Management_System.ProjectForms
     {
         string selectedGender;
         string userType;
-        string isPractitionerOrResident;
+        char isPractitionerOrResident;
 
         public RegistrationForm()
         {
             selectedGender = string.Empty;
             userType = string.Empty;
-            isPractitionerOrResident = string.Empty;
+            //isPractitionerOrResident = string.Empty;
             InitializeComponent();
         }
 
@@ -35,7 +35,7 @@ namespace University_Hospital_Management_System.ProjectForms
 
         private void IsPractitionerOrResident_CheckedChanged(object sender, EventArgs e)
         {
-            isPractitionerOrResident = ((RadioButton)sender).Text.Substring(0, 1);
+            isPractitionerOrResident = ((RadioButton)sender).Text[0];
         }
 
         private void UserType_CheckedChanged(object sender, EventArgs e)
