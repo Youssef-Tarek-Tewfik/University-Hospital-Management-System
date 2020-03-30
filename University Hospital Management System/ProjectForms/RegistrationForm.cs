@@ -25,6 +25,7 @@ namespace University_Hospital_Management_System.ProjectForms
                 OrclDatabase.RegisterNewUser(newName_txt.Text, newUserName_txt.Text, newPassword_txt.Text, specialty_comboBox.SelectedItem.ToString(), selectedGender, userType, isPractitionerOrResident);
                 this.Dispose();
                 this.Close();
+                MessageBox.Show("New user registered in Database", "Operation Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -66,13 +67,13 @@ namespace University_Hospital_Management_System.ProjectForms
                 string.IsNullOrEmpty(newConfirmedPassword_txt.Text) || string.IsNullOrWhiteSpace(newConfirmedPassword_txt.Text) ||
                 specialty_comboBox.SelectedItem == null)
             {
-                MessageBox.Show("Data is missing.");
+                MessageBox.Show("Data is missing.", "Oops!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
             if (newPassword_txt.Text != newConfirmedPassword_txt.Text)
             {
-                MessageBox.Show("Check password again");
+                MessageBox.Show("Check password again", "Oops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 

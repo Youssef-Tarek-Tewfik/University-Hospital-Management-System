@@ -21,7 +21,7 @@ namespace University_Hospital_Management_System.ProjectForms
             }
             else
             {
-                MessageBox.Show("Select User type first.");
+                MessageBox.Show("Select User type first", "Check Credentials", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

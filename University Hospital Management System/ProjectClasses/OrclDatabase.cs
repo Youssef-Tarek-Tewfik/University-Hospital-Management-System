@@ -11,7 +11,7 @@ namespace University_Hospital_Management_System.ProjectClasses
 {
     public class OrclDatabase
     {
-        private readonly string oracleConnectionString = "Data Source=orcl; User ID=scott; Password=tiger;";
+        public static readonly string oracleConnectionString = "Data Source=orcl; User ID=scott; Password=tiger;";
         public static OracleConnection conn;
 
         public OrclDatabase()
@@ -50,7 +50,7 @@ namespace University_Hospital_Management_System.ProjectClasses
                     staffType = CheckIfUserIsDoctor((int)dataReader[0], out isPractitionerOrResident);
                 }
 
-                MessageBox.Show($"{(userType == "Staff" ? staffType : userType)} User found, Signing in...");
+                MessageBox.Show($"{(userType == "Staff" ? staffType : userType)} User found, Signing in...", "Operation Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 SystemPersona onlineUser;
 
                 switch (staffType)
@@ -73,7 +73,7 @@ namespace University_Hospital_Management_System.ProjectClasses
             }
             else
             {
-                MessageBox.Show("No user found.");
+                MessageBox.Show("No user found.", "Check Credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             cmd.Dispose();
@@ -102,11 +102,11 @@ namespace University_Hospital_Management_System.ProjectClasses
 
             if (registerQueryResult != -1 && setTypeQueryResult != -1)
             {
-                MessageBox.Show($"New {type} registered.");
+                MessageBox.Show($"New {type} registered.", "Operation Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Error");
+                MessageBox.Show("Error", "Oops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

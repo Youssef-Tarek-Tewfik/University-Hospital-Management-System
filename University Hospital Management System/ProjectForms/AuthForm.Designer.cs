@@ -68,7 +68,7 @@
             this.radioButton2.Location = new System.Drawing.Point(257, 190);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(86, 26);
-            this.radioButton2.TabIndex = 9;
+            this.radioButton2.TabIndex = 5;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Patient";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -80,7 +80,7 @@
             this.radioButton1.Location = new System.Drawing.Point(166, 190);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(66, 26);
-            this.radioButton1.TabIndex = 8;
+            this.radioButton1.TabIndex = 4;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Staff";
             this.radioButton1.UseVisualStyleBackColor = true;
@@ -102,7 +102,7 @@
             this.registrationLabel.Location = new System.Drawing.Point(227, 367);
             this.registrationLabel.Name = "registrationLabel";
             this.registrationLabel.Size = new System.Drawing.Size(36, 19);
-            this.registrationLabel.TabIndex = 6;
+            this.registrationLabel.TabIndex = 7;
             this.registrationLabel.TabStop = true;
             this.registrationLabel.Text = "here";
             this.registrationLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.registrationLabel_LinkClicked);
@@ -114,7 +114,7 @@
             this.label3.Location = new System.Drawing.Point(107, 367);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(124, 19);
-            this.label3.TabIndex = 5;
+            this.label3.TabIndex = 9;
             this.label3.Text = "New user? Sign up";
             // 
             // login_btn
@@ -122,7 +122,7 @@
             this.login_btn.Location = new System.Drawing.Point(121, 248);
             this.login_btn.Name = "login_btn";
             this.login_btn.Size = new System.Drawing.Size(122, 42);
-            this.login_btn.TabIndex = 4;
+            this.login_btn.TabIndex = 6;
             this.login_btn.Text = "Login";
             this.login_btn.UseVisualStyleBackColor = true;
             this.login_btn.Click += new System.EventHandler(this.login_btn_Click);
@@ -134,7 +134,7 @@
             this.password_txt.MaxLength = 50;
             this.password_txt.Name = "password_txt";
             this.password_txt.Size = new System.Drawing.Size(222, 28);
-            this.password_txt.TabIndex = 3;
+            this.password_txt.TabIndex = 2;
             this.password_txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.password_txt.UseSystemPasswordChar = true;
             // 
