@@ -28,22 +28,47 @@ namespace University_Hospital_Management_System.ProjectClasses
         /// <param name="userType"> Current User Type entering the system </param>
         public static void SignInUser(string usernameEntered, string passwordEntered, string userType)
         {
+            string staffType = string.Empty;
+            string isPractitionerOrResident = string.Empty;
+
             OracleCommand cmd = new OracleCommand
             {
                 Connection = conn,
-                CommandText = $"SELECT Username, Password FROM {userType} WHERE Username=:usrname AND Password=:pass",
+                CommandText = $"SELECT * FROM {userType} WHERE Username=:usrname AND Password=:pass",
                 CommandType = CommandType.Text,
             };
             
             cmd.Parameters.Add("usrname", usernameEntered);
             cmd.Parameters.Add("pass", passwordEntered);
-            OracleDataReader reader = cmd.ExecuteReader();
+            OracleDataReader dataReader = cmd.ExecuteReader();
 
             // Check if only 1 user is found
-            if (reader.Read())
+            if (dataReader.Read())
             {
-                MessageBox.Show($"{userType} User found, Signing in...");
-                MainForm mainForm = new MainForm();
+                if (userType == "Staff")
+                {
+                    staffType = CheckIfUserIsDoctor((int)dataReader[0], out isPractitionerOrResident);
+                }
+
+                MessageBox.Show($"{(userType == "Staff" ? staffType : userType)} User found, Signing in...");
+                SystemPersona onlineUser;
+
+                switch (staffType)
+                {
+                    case "Doctor":
+                        onlineUser = new Doctor((string)dataReader[1], (string)dataReader[2], (string)dataReader[3], dataReader[0].ToString(), (string)dataReader[5], (string)dataReader[4], isPractitionerOrResident == "Y" ? true : false);
+                        break;
+
+                    case "Nurse":
+                        onlineUser = new Nurse((string)dataReader[1], (string)dataReader[2], (string)dataReader[3], dataReader[0].ToString(), (string)dataReader[5], (string)dataReader[4], isPractitionerOrResident == "Y" ? true : false);
+                        break;
+
+                    default:
+                        onlineUser = new Patient((string)dataReader[2], (string)dataReader[3], (string)dataReader[4], dataReader[0].ToString(), (string)dataReader[7], (string)dataReader[6], (string)dataReader[5]);
+                        break;
+                }
+
+                MainForm mainForm = new MainForm(onlineUser);
                 mainForm.Show();
             }
             else
@@ -51,12 +76,13 @@ namespace University_Hospital_Management_System.ProjectClasses
                 MessageBox.Show("No user found.");
             }
 
-            reader.Dispose();
-            reader.Close();
+            cmd.Dispose();
+            dataReader.Dispose();
+            dataReader.Close();
         }
 
         // 3. Insert rows (without procedures)
-        public static void RegisterNewUser(string name, string username, string password, string specialty, string gender, string type, char isPractitionerOrResident)
+        public static void RegisterNewUser(string name, string username, string password, string specialty, string gender, string type, string isPractitionerOrResident)
         {
             OracleCommand cmd = new OracleCommand
             {
@@ -90,7 +116,7 @@ namespace University_Hospital_Management_System.ProjectClasses
         /// <param name="type"> The type of new registered user </param>
         /// <param name="isPractitionerOrResident"> Is the Doctor or Nurse a Practitioner or Resident or not respectively </param>
         /// <returns></returns>
-        private static int SetUserType(string type, char isPractitionerOrResident)
+        private static int SetUserType(string type, string isPractitionerOrResident)
         {
             OracleCommand cmd = new OracleCommand
             {
@@ -103,6 +129,31 @@ namespace University_Hospital_Management_System.ProjectClasses
 
             int queryResult = cmd.ExecuteNonQuery();
             return queryResult;
+        }
+
+        private static string CheckIfUserIsDoctor(int ID, out string isPractitionerOrResident)
+        {
+            OracleCommand cmd = new OracleCommand
+            {
+                Connection = conn,
+                CommandText = $"SELECT * FROM Doctor WHERE ID={ID}",
+                CommandType = CommandType.Text,
+            };
+
+            OracleDataReader IDreader = cmd.ExecuteReader();
+
+            // Check if only 1 user is found
+            if (IDreader.Read())
+            {
+                isPractitionerOrResident = (string)IDreader[1];
+                cmd.Dispose();
+                IDreader.Dispose();
+                IDreader.Close();
+                return "Doctor";
+            }
+
+            isPractitionerOrResident = ""; //(string)IDreader[1];
+            return "Nurse";
         }
     }
 }
