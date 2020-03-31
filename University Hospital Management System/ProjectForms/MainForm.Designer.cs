@@ -34,6 +34,7 @@
             this.viewUserData_btn = new System.Windows.Forms.Button();
             this.showPatientsData_btn = new System.Windows.Forms.Button();
             this.patientsDataPanel = new System.Windows.Forms.Panel();
+            this.saveChanges_btn = new System.Windows.Forms.Button();
             this.patientsDataGridView = new System.Windows.Forms.DataGridView();
             this.searchPatientsData_btn = new System.Windows.Forms.Button();
             this.patientID_txt = new System.Windows.Forms.TextBox();
@@ -41,10 +42,20 @@
             this.patientName_txt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.saveChanges_btn = new System.Windows.Forms.Button();
+            this.bookAppointment_btn = new System.Windows.Forms.Button();
+            this.showRoomsData_btn = new System.Windows.Forms.Button();
+            this.roomsDataPanel = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.roomsDataGridView = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Floor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.patientsDataPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
+            this.roomsDataPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.roomsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -67,13 +78,13 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
             this.label1.Location = new System.Drawing.Point(12, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 28);
+            this.label1.Size = new System.Drawing.Size(146, 26);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Welcome, ";
+            this.label1.Text = "Welcome, Dr. ";
             // 
             // viewUserData_btn
             // 
@@ -86,7 +97,7 @@
             // 
             // showPatientsData_btn
             // 
-            this.showPatientsData_btn.Location = new System.Drawing.Point(17, 186);
+            this.showPatientsData_btn.Location = new System.Drawing.Point(17, 283);
             this.showPatientsData_btn.Name = "showPatientsData_btn";
             this.showPatientsData_btn.Size = new System.Drawing.Size(128, 58);
             this.showPatientsData_btn.TabIndex = 0;
@@ -110,6 +121,17 @@
             this.patientsDataPanel.TabIndex = 4;
             this.patientsDataPanel.Visible = false;
             this.patientsDataPanel.VisibleChanged += new System.EventHandler(this.patientsDataPanel_VisibleChanged);
+            // 
+            // saveChanges_btn
+            // 
+            this.saveChanges_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveChanges_btn.Location = new System.Drawing.Point(325, 497);
+            this.saveChanges_btn.Name = "saveChanges_btn";
+            this.saveChanges_btn.Size = new System.Drawing.Size(169, 38);
+            this.saveChanges_btn.TabIndex = 3;
+            this.saveChanges_btn.Text = "Save Changes";
+            this.saveChanges_btn.UseVisualStyleBackColor = true;
+            this.saveChanges_btn.Click += new System.EventHandler(this.saveChanges_btn_Click);
             // 
             // patientsDataGridView
             // 
@@ -175,26 +197,95 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(168, 25);
+            this.label2.Size = new System.Drawing.Size(249, 25);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Patients Data :";
+            this.label2.Text = "Patients Data History :";
             // 
-            // saveChanges_btn
+            // bookAppointment_btn
             // 
-            this.saveChanges_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveChanges_btn.Location = new System.Drawing.Point(325, 497);
-            this.saveChanges_btn.Name = "saveChanges_btn";
-            this.saveChanges_btn.Size = new System.Drawing.Size(169, 38);
-            this.saveChanges_btn.TabIndex = 3;
-            this.saveChanges_btn.Text = "Save Changes";
-            this.saveChanges_btn.UseVisualStyleBackColor = true;
-            this.saveChanges_btn.Click += new System.EventHandler(this.saveChanges_btn_Click);
+            this.bookAppointment_btn.Location = new System.Drawing.Point(17, 164);
+            this.bookAppointment_btn.Name = "bookAppointment_btn";
+            this.bookAppointment_btn.Size = new System.Drawing.Size(128, 58);
+            this.bookAppointment_btn.TabIndex = 5;
+            this.bookAppointment_btn.Text = "Book an Appointment";
+            this.bookAppointment_btn.UseVisualStyleBackColor = true;
+            // 
+            // showRoomsData_btn
+            // 
+            this.showRoomsData_btn.Location = new System.Drawing.Point(17, 224);
+            this.showRoomsData_btn.Name = "showRoomsData_btn";
+            this.showRoomsData_btn.Size = new System.Drawing.Size(128, 58);
+            this.showRoomsData_btn.TabIndex = 6;
+            this.showRoomsData_btn.Text = "Show Rooms Data";
+            this.showRoomsData_btn.UseVisualStyleBackColor = true;
+            this.showRoomsData_btn.Click += new System.EventHandler(this.showRoomsData_btn_Click);
+            // 
+            // roomsDataPanel
+            // 
+            this.roomsDataPanel.Controls.Add(this.roomsDataGridView);
+            this.roomsDataPanel.Controls.Add(this.label5);
+            this.roomsDataPanel.Location = new System.Drawing.Point(420, 27);
+            this.roomsDataPanel.Name = "roomsDataPanel";
+            this.roomsDataPanel.Size = new System.Drawing.Size(506, 538);
+            this.roomsDataPanel.TabIndex = 7;
+            this.roomsDataPanel.Visible = false;
+            this.roomsDataPanel.VisibleChanged += new System.EventHandler(this.roomsDataPanel_VisibleChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(3, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(154, 25);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Rooms Data :";
+            // 
+            // roomsDataGridView
+            // 
+            this.roomsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.roomsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.Floor,
+            this.Type,
+            this.Status});
+            this.roomsDataGridView.Location = new System.Drawing.Point(8, 69);
+            this.roomsDataGridView.Name = "roomsDataGridView";
+            this.roomsDataGridView.Size = new System.Drawing.Size(486, 460);
+            this.roomsDataGridView.TabIndex = 2;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Floor
+            // 
+            this.Floor.HeaderText = "Floor";
+            this.Floor.Name = "Floor";
+            this.Floor.ReadOnly = true;
+            // 
+            // Type
+            // 
+            this.Type.HeaderText = "Type";
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 568);
+            this.Controls.Add(this.roomsDataPanel);
+            this.Controls.Add(this.showRoomsData_btn);
+            this.Controls.Add(this.bookAppointment_btn);
             this.Controls.Add(this.patientsDataPanel);
             this.Controls.Add(this.showPatientsData_btn);
             this.Controls.Add(this.viewUserData_btn);
@@ -212,6 +303,9 @@
             this.patientsDataPanel.ResumeLayout(false);
             this.patientsDataPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).EndInit();
+            this.roomsDataPanel.ResumeLayout(false);
+            this.roomsDataPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.roomsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,5 +327,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button saveChanges_btn;
+        private System.Windows.Forms.Button bookAppointment_btn;
+        private System.Windows.Forms.Button showRoomsData_btn;
+        private System.Windows.Forms.Panel roomsDataPanel;
+        private System.Windows.Forms.DataGridView roomsDataGridView;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Floor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
     }
 }

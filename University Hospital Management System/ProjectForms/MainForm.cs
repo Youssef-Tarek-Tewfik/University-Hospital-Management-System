@@ -26,7 +26,7 @@ namespace University_Hospital_Management_System.ProjectForms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            label1.Text += onlineUser.name;
+            label1.Text +=  label1.Text == null ? label1.Text = "" : label1.Text = onlineUser.name;
         }
 
         private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -95,5 +95,39 @@ namespace University_Hospital_Management_System.ProjectForms
             ds.Clear();
         }
 
+        private void showRoomsData_btn_Click(object sender, EventArgs e)
+        {
+            roomsDataPanel.Visible = !roomsDataPanel.Visible;
+            showRoomsData_btn.Text = roomsDataPanel.Visible == false ? "Show Rooms Data" : "Hide Rooms Data";
+
+            OracleCommand cmd = new OracleCommand
+            { 
+                Connection = OrclDatabase.conn,
+                CommandText = "SELECT * FROM Room",
+                CommandType = CommandType.Text
+            };
+
+            OracleDataReader dr = cmd.ExecuteReader();
+            int i = 0;
+
+            while (dr.Read())
+            {
+                roomsDataGridView.RowCount++;
+                roomsDataGridView.Rows[i].Cells[0].Value = dr[0];
+                roomsDataGridView.Rows[i].Cells[1].Value = dr[1];
+                roomsDataGridView.Rows[i].Cells[2].Value = dr[2];
+                roomsDataGridView.Rows[i].Cells[3].Value = dr[3];
+                i++;
+            }
+
+            cmd.Dispose();
+            dr.Dispose();
+            dr.Close();
+        }
+
+        private void roomsDataPanel_VisibleChanged(object sender, EventArgs e)
+        {
+            roomsDataGridView.RowCount = 1;
+        }
     }
 }

@@ -111,7 +111,7 @@ namespace University_Hospital_Management_System.ProjectClasses
         }
 
         /// <summary>
-        /// Sets the user as Doctor, Patient or Nurse
+        /// Sets the user as Doctor or Nurse
         /// </summary>
         /// <param name="type"> The type of new registered user </param>
         /// <param name="isPractitionerOrResident"> Is the Doctor or Nurse a Practitioner or Resident or not respectively </param>
