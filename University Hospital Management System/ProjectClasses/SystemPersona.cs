@@ -34,8 +34,8 @@ namespace University_Hospital_Management_System.ProjectClasses
         public string name { get; set; }
         protected string userName;
         protected string password;
-        protected string ID;
-        protected UserType type;
+        public string ID;
+        public string type;
         protected string gender;
 
         public void UpdatePersonalData()

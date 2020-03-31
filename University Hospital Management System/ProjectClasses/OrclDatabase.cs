@@ -57,14 +57,17 @@ namespace University_Hospital_Management_System.ProjectClasses
                 {
                     case "Doctor":
                         onlineUser = new Doctor((string)dataReader[1], (string)dataReader[2], (string)dataReader[3], dataReader[0].ToString(), (string)dataReader[5], (string)dataReader[4], isPractitionerOrResident == "Y" ? true : false);
+                        onlineUser.type = "Doctor";
                         break;
 
                     case "Nurse":
                         onlineUser = new Nurse((string)dataReader[1], (string)dataReader[2], (string)dataReader[3], dataReader[0].ToString(), (string)dataReader[5], (string)dataReader[4], isPractitionerOrResident == "Y" ? true : false);
+                        onlineUser.type = "Nurse";
                         break;
 
                     default:
                         onlineUser = new Patient((string)dataReader[2], (string)dataReader[3], (string)dataReader[4], dataReader[0].ToString(), (string)dataReader[7], int.Parse(dataReader[6].ToString()), (string)dataReader[5]);
+                        onlineUser.type = "Patient";
                         break;
                 }
 
