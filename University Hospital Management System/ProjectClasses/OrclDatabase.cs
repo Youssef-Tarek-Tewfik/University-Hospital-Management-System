@@ -64,7 +64,7 @@ namespace University_Hospital_Management_System.ProjectClasses
                         break;
 
                     default:
-                        onlineUser = new Patient((string)dataReader[2], (string)dataReader[3], (string)dataReader[4], dataReader[0].ToString(), (string)dataReader[7], (string)dataReader[6], (string)dataReader[5]);
+                        onlineUser = new Patient((string)dataReader[2], (string)dataReader[3], (string)dataReader[4], dataReader[0].ToString(), (string)dataReader[7], int.Parse(dataReader[6].ToString()), (string)dataReader[5]);
                         break;
                 }
 
@@ -82,12 +82,12 @@ namespace University_Hospital_Management_System.ProjectClasses
         }
 
         // 3. Insert rows (without procedures)
-        public static void RegisterNewUser(string name, string username, string password, string specialty, string gender, string type, string isPractitionerOrResident)
+        public static void RegisterNewStaffUser(string name, string username, string password, string specialty, string gender, string type, string isPractitionerOrResident)
         {
             OracleCommand cmd = new OracleCommand
             {
                 Connection = conn,
-                CommandText = "INSERT INTO Staff VALUES (StaffIDSeq.nextval, :name, :username, :password, :specialty, :gender)",
+                CommandText = $"INSERT INTO Staff VALUES (StaffIDSeq.nextval, :name, :username, :password, :specialty, :gender)",
                 CommandType = CommandType.Text,
             };
 
@@ -154,6 +154,34 @@ namespace University_Hospital_Management_System.ProjectClasses
 
             isPractitionerOrResident = ""; //(string)IDreader[1];
             return "Nurse";
+        }
+
+        public static void RegisterNewPatientUser(string name, string username, string password, string contactNumber, string age, string gender)
+        {
+            OracleCommand cmd = new OracleCommand
+            {
+                Connection = conn,
+                CommandText = $"INSERT INTO Patient VALUES (PatientIDSeq.nextval, NULL, :name, :username, :password, :contact, :age, :gender)",
+                CommandType = CommandType.Text,
+            };
+
+            cmd.Parameters.Add("name", name);
+            cmd.Parameters.Add("username", username);
+            cmd.Parameters.Add("password", password);
+            cmd.Parameters.Add("contact", contactNumber);
+            cmd.Parameters.Add("age", age);
+            cmd.Parameters.Add("gender", gender);
+
+            int registerQueryResult = cmd.ExecuteNonQuery();
+
+            if (registerQueryResult != -1)
+            {
+                MessageBox.Show("New Patient registered.", "Operation Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error", "Oops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

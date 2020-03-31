@@ -22,7 +22,15 @@ namespace University_Hospital_Management_System.ProjectForms
         {
             if (CheckIfTextValid())
             {
-                OrclDatabase.RegisterNewUser(newName_txt.Text, newUserName_txt.Text, newPassword_txt.Text, specialty_comboBox.SelectedItem.ToString(), selectedGender, userType, isPractitionerOrResident);
+                if (doctor_radio.Checked || nurse_radio.Checked)
+                {
+                    OrclDatabase.RegisterNewStaffUser(newName_txt.Text, newUserName_txt.Text, newPassword_txt.Text, specialty_comboBox.SelectedItem.ToString(), selectedGender, userType, isPractitionerOrResident);
+                }
+                else if (patient_radio.Checked)
+                {
+                    OrclDatabase.RegisterNewPatientUser(newName_txt.Text, newUserName_txt.Text, newPassword_txt.Text, contactNumber_txt.Text, age_txt.Text, selectedGender);
+                }
+
                 this.Dispose();
                 this.Close();
                 MessageBox.Show("New user registered in Database", "Operation Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -46,29 +54,58 @@ namespace University_Hospital_Management_System.ProjectForms
             switch (userType)
             {
                 case "Doctor":
+                    label6.Visible = true;
+                    specialty_comboBox.Visible = true;
+                    contactNumber_txt.Enabled = false;
+                    age_txt.Enabled = false;
                     groupBox3.Visible = true;
                     groupBox3.Text = "Resident?"; break;
 
                 case "Nurse":
+                    label6.Visible = true;
+                    specialty_comboBox.Visible = true;
+                    contactNumber_txt.Enabled = false;
+                    age_txt.Enabled = false;
                     groupBox3.Visible = true;
                     groupBox3.Text = "Practitioner?"; break;
 
                 default:
+                    label6.Visible = false;
+                    specialty_comboBox.Visible = false;
+                    contactNumber_txt.Enabled = true;
+                    age_txt.Enabled = true;
                     groupBox3.Visible = false; break;
             }
         }
 
         private bool CheckIfTextValid()
         {
-            if (string.IsNullOrEmpty(selectedGender) || string.IsNullOrEmpty(userType) ||
-                string.IsNullOrEmpty(newName_txt.Text) || string.IsNullOrWhiteSpace(newName_txt.Text) ||
-                string.IsNullOrEmpty(newUserName_txt.Text) || string.IsNullOrWhiteSpace(newUserName_txt.Text) ||
-                string.IsNullOrEmpty(newPassword_txt.Text) || string.IsNullOrWhiteSpace(newPassword_txt.Text) ||
-                string.IsNullOrEmpty(newConfirmedPassword_txt.Text) || string.IsNullOrWhiteSpace(newConfirmedPassword_txt.Text) ||
-                specialty_comboBox.SelectedItem == null)
+            if (patient_radio.Checked)
             {
-                MessageBox.Show("Data is missing.", "Oops!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                if (string.IsNullOrEmpty(selectedGender) ||
+                    string.IsNullOrEmpty(newName_txt.Text) || string.IsNullOrWhiteSpace(newName_txt.Text) ||
+                    string.IsNullOrEmpty(newUserName_txt.Text) || string.IsNullOrWhiteSpace(newUserName_txt.Text) ||
+                    string.IsNullOrEmpty(newPassword_txt.Text) || string.IsNullOrWhiteSpace(newPassword_txt.Text) ||
+                    string.IsNullOrEmpty(newConfirmedPassword_txt.Text) || string.IsNullOrWhiteSpace(newConfirmedPassword_txt.Text) ||
+                    string.IsNullOrEmpty(contactNumber_txt.Text) || string.IsNullOrWhiteSpace(contactNumber_txt.Text) ||
+                    string.IsNullOrEmpty(age_txt.Text) || string.IsNullOrWhiteSpace(age_txt.Text))
+                {
+                    MessageBox.Show("Data is missing.", "Oops!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+            else if (doctor_radio.Checked || nurse_radio.Checked)
+            {
+                if (string.IsNullOrEmpty(selectedGender) || string.IsNullOrEmpty(userType) ||
+                    string.IsNullOrEmpty(newName_txt.Text) || string.IsNullOrWhiteSpace(newName_txt.Text) ||
+                    string.IsNullOrEmpty(newUserName_txt.Text) || string.IsNullOrWhiteSpace(newUserName_txt.Text) ||
+                    string.IsNullOrEmpty(newPassword_txt.Text) || string.IsNullOrWhiteSpace(newPassword_txt.Text) ||
+                    string.IsNullOrEmpty(newConfirmedPassword_txt.Text) || string.IsNullOrWhiteSpace(newConfirmedPassword_txt.Text) ||
+                    specialty_comboBox.SelectedItem == null)
+                {
+                    MessageBox.Show("Data is missing.", "Oops!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
             }
 
             if (newPassword_txt.Text != newConfirmedPassword_txt.Text)
