@@ -47,12 +47,18 @@
             this.bookAppointment_btn = new System.Windows.Forms.Button();
             this.showRoomsData_btn = new System.Windows.Forms.Button();
             this.roomsDataPanel = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.roomsDataGridView = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Floor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
+            this.roomFloorNumber_txt = new System.Windows.Forms.TextBox();
+            this.roomType_txt = new System.Windows.Forms.TextBox();
+            this.addRoomData_btn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.patientsDataPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
@@ -82,14 +88,14 @@
             // optionsToolStripMenuItem1
             // 
             this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
-            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
             this.optionsToolStripMenuItem1.Text = "Sign Out";
             this.optionsToolStripMenuItem1.Click += new System.EventHandler(this.optionsToolStripMenuItem1_Click);
             // 
             // deleteAccountToolStripMenuItem
             // 
             this.deleteAccountToolStripMenuItem.Name = "deleteAccountToolStripMenuItem";
-            this.deleteAccountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteAccountToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.deleteAccountToolStripMenuItem.Text = "Delete Account";
             this.deleteAccountToolStripMenuItem.Click += new System.EventHandler(this.deleteAccountToolStripMenuItem_Click);
             // 
@@ -227,6 +233,7 @@
             this.bookAppointment_btn.TabIndex = 5;
             this.bookAppointment_btn.Text = "Book an Appointment";
             this.bookAppointment_btn.UseVisualStyleBackColor = true;
+            this.bookAppointment_btn.Click += new System.EventHandler(this.bookAppointment_btn_Click);
             // 
             // showRoomsData_btn
             // 
@@ -240,6 +247,12 @@
             // 
             // roomsDataPanel
             // 
+            this.roomsDataPanel.Controls.Add(this.addRoomData_btn);
+            this.roomsDataPanel.Controls.Add(this.roomType_txt);
+            this.roomsDataPanel.Controls.Add(this.roomFloorNumber_txt);
+            this.roomsDataPanel.Controls.Add(this.label9);
+            this.roomsDataPanel.Controls.Add(this.label8);
+            this.roomsDataPanel.Controls.Add(this.label6);
             this.roomsDataPanel.Controls.Add(this.roomsDataGridView);
             this.roomsDataPanel.Controls.Add(this.label5);
             this.roomsDataPanel.Location = new System.Drawing.Point(420, 27);
@@ -248,6 +261,36 @@
             this.roomsDataPanel.TabIndex = 7;
             this.roomsDataPanel.Visible = false;
             this.roomsDataPanel.VisibleChanged += new System.EventHandler(this.roomsDataPanel_VisibleChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(7, 476);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(121, 23);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Room Type :";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(30, 509);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(83, 23);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Floor # :";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(3, 440);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(183, 25);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Add new Room :";
             // 
             // roomsDataGridView
             // 
@@ -259,7 +302,7 @@
             this.Status});
             this.roomsDataGridView.Location = new System.Drawing.Point(8, 69);
             this.roomsDataGridView.Name = "roomsDataGridView";
-            this.roomsDataGridView.Size = new System.Drawing.Size(486, 460);
+            this.roomsDataGridView.Size = new System.Drawing.Size(486, 368);
             this.roomsDataGridView.TabIndex = 2;
             // 
             // ID
@@ -295,6 +338,35 @@
             this.label5.Size = new System.Drawing.Size(154, 25);
             this.label5.TabIndex = 1;
             this.label5.Text = "Rooms Data :";
+            // 
+            // roomFloorNumber_txt
+            // 
+            this.roomFloorNumber_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomFloorNumber_txt.Location = new System.Drawing.Point(134, 504);
+            this.roomFloorNumber_txt.MaxLength = 2;
+            this.roomFloorNumber_txt.Name = "roomFloorNumber_txt";
+            this.roomFloorNumber_txt.Size = new System.Drawing.Size(88, 29);
+            this.roomFloorNumber_txt.TabIndex = 8;
+            // 
+            // roomType_txt
+            // 
+            this.roomType_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomType_txt.Location = new System.Drawing.Point(134, 471);
+            this.roomType_txt.MaxLength = 20;
+            this.roomType_txt.Name = "roomType_txt";
+            this.roomType_txt.Size = new System.Drawing.Size(155, 29);
+            this.roomType_txt.TabIndex = 9;
+            // 
+            // addRoomData_btn
+            // 
+            this.addRoomData_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addRoomData_btn.Location = new System.Drawing.Point(325, 452);
+            this.addRoomData_btn.Name = "addRoomData_btn";
+            this.addRoomData_btn.Size = new System.Drawing.Size(118, 72);
+            this.addRoomData_btn.TabIndex = 10;
+            this.addRoomData_btn.Text = "Add Room Data";
+            this.addRoomData_btn.UseVisualStyleBackColor = true;
+            this.addRoomData_btn.Click += new System.EventHandler(this.addRoomData_btn_Click);
             // 
             // MainForm
             // 
@@ -356,5 +428,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem deleteAccountToolStripMenuItem;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox roomType_txt;
+        private System.Windows.Forms.TextBox roomFloorNumber_txt;
+        private System.Windows.Forms.Button addRoomData_btn;
     }
 }

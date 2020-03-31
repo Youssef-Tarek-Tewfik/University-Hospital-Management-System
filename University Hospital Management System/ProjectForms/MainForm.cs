@@ -155,6 +155,35 @@ namespace University_Hospital_Management_System.ProjectForms
             }
         }
 
+        private void addRoomData_btn_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(roomFloorNumber_txt.Text) || !string.IsNullOrWhiteSpace(roomFloorNumber_txt.Text) ||
+                !string.IsNullOrEmpty(roomType_txt.Text) || !string.IsNullOrWhiteSpace(roomType_txt.Text))
+            {
+                OracleCommand cmd = new OracleCommand
+                {
+                    Connection = OrclDatabase.conn,
+                    CommandText = "AddNewRoom",
+                    CommandType = CommandType.StoredProcedure
+                };
+
+                cmd.Parameters.Add("floor", roomFloorNumber_txt.Text);
+                cmd.Parameters.Add("roomType", roomType_txt.Text);
+
+                int r = cmd.ExecuteNonQuery();
+
+                if (r == -1)
+                {
+                    MessageBox.Show("New room Added to Database", "Operation Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void bookAppointment_btn_Click(object sender, EventArgs e)
+        {
+            BookingAppointmentForm appointmentForm = new BookingAppointmentForm();
+            appointmentForm.Show();
+        }
 
         #endregion
 
@@ -184,6 +213,9 @@ namespace University_Hospital_Management_System.ProjectForms
             ds.Dispose();
             ds.Clear();
         }
+
         #endregion
+
+
     }
 }
