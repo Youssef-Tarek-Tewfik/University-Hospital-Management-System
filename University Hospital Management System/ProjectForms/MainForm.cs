@@ -28,8 +28,20 @@ namespace University_Hospital_Management_System.ProjectForms
         private void MainForm_Load(object sender, EventArgs e)
         {
             label1.Text += label1.Text == null ? label1.Text = "" : label1.Text = onlineUser.name;
+
+            if (onlineUser.GetType() == typeof(Doctor) || onlineUser.GetType() == typeof(Nurse))
+            {
+                showPatientsData_btn.Visible = true;
+                showRoomsData_btn.Visible = true;
+            }
+            else if (onlineUser.GetType() == typeof(Patient))
+            {
+                showPatientsData_btn.Visible = false;
+                showRoomsData_btn.Visible = false;
+            }
         }
 
+        // B. Using ODP.NET Disconnected mode
         private void searchPatientsData_btn_Click(object sender, EventArgs e)
         {
             //ClearMemory();
@@ -52,6 +64,7 @@ namespace University_Hospital_Management_System.ProjectForms
             patientsDataGridView.DataSource = ds.Tables[0];
         }
 
+        // B. Using ODP.NET Disconnected mode
         private void saveChanges_btn_Click(object sender, EventArgs e)
         {
             builder = new OracleCommandBuilder(adapter);
@@ -76,6 +89,7 @@ namespace University_Hospital_Management_System.ProjectForms
             patientsDataGridView.DataSource = null;
         }
 
+        // 1. Select 1 or more rows without WHERE condition
         private void showRoomsData_btn_Click(object sender, EventArgs e)
         {
             roomsDataPanel.Visible = !roomsDataPanel.Visible;
@@ -123,6 +137,7 @@ namespace University_Hospital_Management_System.ProjectForms
             }
         }
 
+        // 3. Delete rows (without procedures)
         private void deleteAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult deleteResult = MessageBox.Show("Are you sure to delete your account?", "Delete account", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -155,6 +170,7 @@ namespace University_Hospital_Management_System.ProjectForms
             }
         }
 
+        // 6. Insert row using stored procedure
         private void addRoomData_btn_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(roomFloorNumber_txt.Text) || !string.IsNullOrWhiteSpace(roomFloorNumber_txt.Text) ||
@@ -181,7 +197,7 @@ namespace University_Hospital_Management_System.ProjectForms
 
         private void bookAppointment_btn_Click(object sender, EventArgs e)
         {
-            BookingAppointmentForm appointmentForm = new BookingAppointmentForm();
+            BookingAppointmentForm appointmentForm = new BookingAppointmentForm(onlineUser);
             appointmentForm.Show();
         }
 
