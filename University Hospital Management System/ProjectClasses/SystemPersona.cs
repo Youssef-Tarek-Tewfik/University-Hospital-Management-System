@@ -31,12 +31,12 @@ namespace University_Hospital_Management_System.ProjectClasses
 
     public class SystemPersona
     {
-        public string name { get; set; }
-        protected string userName;
-        protected string password;
+        public string name;
+        public string userName;
+        public string password;
         public string ID;
         public string type;
-        protected string gender;
+        public string gender;
 
         public void UpdatePersonalData()
         {

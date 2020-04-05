@@ -201,6 +201,53 @@ namespace University_Hospital_Management_System.ProjectForms
             appointmentForm.Show();
         }
 
+        private void saveNewUserChanges_btn_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(userUsername_txt.Text) && !string.IsNullOrWhiteSpace(userUsername_txt.Text) &&
+                !string.IsNullOrEmpty(userNewPassword_txt.Text) && !string.IsNullOrWhiteSpace(userNewPassword_txt.Text) &&
+                !string.IsNullOrEmpty(userConfirmNewPassword_txt.Text) && !string.IsNullOrWhiteSpace(userConfirmNewPassword_txt.Text))
+            {
+                if (userNewPassword_txt.Text == userConfirmNewPassword_txt.Text)
+                {
+                    OracleCommand cmd = new OracleCommand
+                    {
+                        Connection = OrclDatabase.conn,
+                        CommandText = "UpdateUserData",
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    cmd.Parameters.Add("patientID", int.Parse(onlineUser.ID));
+                    cmd.Parameters.Add("newUsername", userUsername_txt.Text);
+                    cmd.Parameters.Add("newPassword", userNewPassword_txt.Text);
+
+                    int result = cmd.ExecuteNonQuery();
+
+                    if (result == -1)
+                    {
+                        MessageBox.Show("User's new data updated Successfully", "Operation Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Check password again", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Check missing data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void viewUserData_btn_Click(object sender, EventArgs e)
+        {
+            userDataPanel.Visible = !userDataPanel.Visible;
+            viewUserData_btn.Text = userDataPanel.Visible == false ? "View my Data" : "Hide my Data";
+
+            userID_txt.Text = onlineUser.ID;
+            userName_txt.Text = onlineUser.name;
+            userUsername_txt.Text = onlineUser.userName;
+        }
+
         #endregion
 
         #region Helper Methods
@@ -230,8 +277,8 @@ namespace University_Hospital_Management_System.ProjectForms
             ds.Clear();
         }
 
-        #endregion
 
+        #endregion
 
     }
 }

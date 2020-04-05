@@ -8,7 +8,7 @@ namespace University_Hospital_Management_System.ProjectClasses
 {
     public class Doctor : SystemPersona
     {
-        private string specialty;
+        public string specialty;
         public bool isResident;
 
         public Doctor(string name, string userName, string password, string iD, string gender, string specialty, bool isResident)

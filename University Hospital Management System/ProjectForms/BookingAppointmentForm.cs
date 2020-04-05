@@ -121,6 +121,8 @@ namespace University_Hospital_Management_System.ProjectForms
 
             cmd2.Parameters.Add("RoomID", int.Parse(roomID));
             cmd2.Parameters.Add("newStatus", "Scheduled");
+            cmd2.Parameters.Add("staffID", int.Parse(staffID));
+            cmd2.Parameters.Add("patientID", int.Parse(onlineUser.ID));
 
             int insertQueryResult = cmd.ExecuteNonQuery();
             int updateQueryResult = cmd2.ExecuteNonQuery();

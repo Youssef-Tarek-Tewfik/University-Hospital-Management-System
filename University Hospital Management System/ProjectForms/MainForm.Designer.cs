@@ -47,6 +47,19 @@
             this.bookAppointment_btn = new System.Windows.Forms.Button();
             this.showRoomsData_btn = new System.Windows.Forms.Button();
             this.roomsDataPanel = new System.Windows.Forms.Panel();
+            this.userDataPanel = new System.Windows.Forms.Panel();
+            this.userNewPassword_txt = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.userUsername_txt = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.userName_txt = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.userID_txt = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.addRoomData_btn = new System.Windows.Forms.Button();
+            this.roomType_txt = new System.Windows.Forms.TextBox();
+            this.roomFloorNumber_txt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -56,13 +69,14 @@
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
-            this.roomFloorNumber_txt = new System.Windows.Forms.TextBox();
-            this.roomType_txt = new System.Windows.Forms.TextBox();
-            this.addRoomData_btn = new System.Windows.Forms.Button();
+            this.userConfirmNewPassword_txt = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.saveNewUserChanges_btn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.patientsDataPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
             this.roomsDataPanel.SuspendLayout();
+            this.userDataPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.roomsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,6 +132,7 @@
             this.viewUserData_btn.TabIndex = 2;
             this.viewUserData_btn.Text = "View my Data";
             this.viewUserData_btn.UseVisualStyleBackColor = true;
+            this.viewUserData_btn.Click += new System.EventHandler(this.viewUserData_btn_Click);
             // 
             // showPatientsData_btn
             // 
@@ -262,6 +277,146 @@
             this.roomsDataPanel.Visible = false;
             this.roomsDataPanel.VisibleChanged += new System.EventHandler(this.roomsDataPanel_VisibleChanged);
             // 
+            // userDataPanel
+            // 
+            this.userDataPanel.Controls.Add(this.saveNewUserChanges_btn);
+            this.userDataPanel.Controls.Add(this.userConfirmNewPassword_txt);
+            this.userDataPanel.Controls.Add(this.label14);
+            this.userDataPanel.Controls.Add(this.userNewPassword_txt);
+            this.userDataPanel.Controls.Add(this.label13);
+            this.userDataPanel.Controls.Add(this.userUsername_txt);
+            this.userDataPanel.Controls.Add(this.label12);
+            this.userDataPanel.Controls.Add(this.userName_txt);
+            this.userDataPanel.Controls.Add(this.label11);
+            this.userDataPanel.Controls.Add(this.userID_txt);
+            this.userDataPanel.Controls.Add(this.label10);
+            this.userDataPanel.Controls.Add(this.label7);
+            this.userDataPanel.Location = new System.Drawing.Point(342, 27);
+            this.userDataPanel.Name = "userDataPanel";
+            this.userDataPanel.Size = new System.Drawing.Size(506, 538);
+            this.userDataPanel.TabIndex = 8;
+            this.userDataPanel.Visible = false;
+            // 
+            // userNewPassword_txt
+            // 
+            this.userNewPassword_txt.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F);
+            this.userNewPassword_txt.Location = new System.Drawing.Point(211, 164);
+            this.userNewPassword_txt.MaxLength = 30;
+            this.userNewPassword_txt.Name = "userNewPassword_txt";
+            this.userNewPassword_txt.Size = new System.Drawing.Size(199, 27);
+            this.userNewPassword_txt.TabIndex = 10;
+            this.userNewPassword_txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.userNewPassword_txt.UseSystemPasswordChar = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(20, 171);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(123, 20);
+            this.label13.TabIndex = 9;
+            this.label13.Text = "New Password :";
+            // 
+            // userUsername_txt
+            // 
+            this.userUsername_txt.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F);
+            this.userUsername_txt.Location = new System.Drawing.Point(115, 120);
+            this.userUsername_txt.Name = "userUsername_txt";
+            this.userUsername_txt.Size = new System.Drawing.Size(174, 27);
+            this.userUsername_txt.TabIndex = 8;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(20, 123);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(90, 20);
+            this.label12.TabIndex = 7;
+            this.label12.Text = "Username :";
+            // 
+            // userName_txt
+            // 
+            this.userName_txt.Enabled = false;
+            this.userName_txt.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F);
+            this.userName_txt.Location = new System.Drawing.Point(86, 82);
+            this.userName_txt.MaxLength = 50;
+            this.userName_txt.Name = "userName_txt";
+            this.userName_txt.ReadOnly = true;
+            this.userName_txt.Size = new System.Drawing.Size(291, 27);
+            this.userName_txt.TabIndex = 6;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(20, 85);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(60, 20);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Name :";
+            // 
+            // userID_txt
+            // 
+            this.userID_txt.Enabled = false;
+            this.userID_txt.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F);
+            this.userID_txt.Location = new System.Drawing.Point(57, 49);
+            this.userID_txt.MaxLength = 5;
+            this.userID_txt.Name = "userID_txt";
+            this.userID_txt.ReadOnly = true;
+            this.userID_txt.Size = new System.Drawing.Size(71, 27);
+            this.userID_txt.TabIndex = 4;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(20, 52);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(32, 20);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "ID :";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(9, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(213, 25);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "My Personal Data :";
+            // 
+            // addRoomData_btn
+            // 
+            this.addRoomData_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addRoomData_btn.Location = new System.Drawing.Point(325, 452);
+            this.addRoomData_btn.Name = "addRoomData_btn";
+            this.addRoomData_btn.Size = new System.Drawing.Size(118, 72);
+            this.addRoomData_btn.TabIndex = 10;
+            this.addRoomData_btn.Text = "Add Room Data";
+            this.addRoomData_btn.UseVisualStyleBackColor = true;
+            this.addRoomData_btn.Click += new System.EventHandler(this.addRoomData_btn_Click);
+            // 
+            // roomType_txt
+            // 
+            this.roomType_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomType_txt.Location = new System.Drawing.Point(134, 471);
+            this.roomType_txt.MaxLength = 20;
+            this.roomType_txt.Name = "roomType_txt";
+            this.roomType_txt.Size = new System.Drawing.Size(155, 29);
+            this.roomType_txt.TabIndex = 9;
+            // 
+            // roomFloorNumber_txt
+            // 
+            this.roomFloorNumber_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomFloorNumber_txt.Location = new System.Drawing.Point(134, 504);
+            this.roomFloorNumber_txt.MaxLength = 2;
+            this.roomFloorNumber_txt.Name = "roomFloorNumber_txt";
+            this.roomFloorNumber_txt.Size = new System.Drawing.Size(88, 29);
+            this.roomFloorNumber_txt.TabIndex = 8;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -339,40 +494,44 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Rooms Data :";
             // 
-            // roomFloorNumber_txt
+            // userConfirmNewPassword_txt
             // 
-            this.roomFloorNumber_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roomFloorNumber_txt.Location = new System.Drawing.Point(134, 504);
-            this.roomFloorNumber_txt.MaxLength = 2;
-            this.roomFloorNumber_txt.Name = "roomFloorNumber_txt";
-            this.roomFloorNumber_txt.Size = new System.Drawing.Size(88, 29);
-            this.roomFloorNumber_txt.TabIndex = 8;
+            this.userConfirmNewPassword_txt.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F);
+            this.userConfirmNewPassword_txt.Location = new System.Drawing.Point(211, 201);
+            this.userConfirmNewPassword_txt.MaxLength = 30;
+            this.userConfirmNewPassword_txt.Name = "userConfirmNewPassword_txt";
+            this.userConfirmNewPassword_txt.Size = new System.Drawing.Size(199, 27);
+            this.userConfirmNewPassword_txt.TabIndex = 12;
+            this.userConfirmNewPassword_txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.userConfirmNewPassword_txt.UseSystemPasswordChar = true;
             // 
-            // roomType_txt
+            // label14
             // 
-            this.roomType_txt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roomType_txt.Location = new System.Drawing.Point(134, 471);
-            this.roomType_txt.MaxLength = 20;
-            this.roomType_txt.Name = "roomType_txt";
-            this.roomType_txt.Size = new System.Drawing.Size(155, 29);
-            this.roomType_txt.TabIndex = 9;
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(20, 204);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(185, 20);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "Confirm New Password :";
             // 
-            // addRoomData_btn
+            // saveNewUserChanges_btn
             // 
-            this.addRoomData_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addRoomData_btn.Location = new System.Drawing.Point(325, 452);
-            this.addRoomData_btn.Name = "addRoomData_btn";
-            this.addRoomData_btn.Size = new System.Drawing.Size(118, 72);
-            this.addRoomData_btn.TabIndex = 10;
-            this.addRoomData_btn.Text = "Add Room Data";
-            this.addRoomData_btn.UseVisualStyleBackColor = true;
-            this.addRoomData_btn.Click += new System.EventHandler(this.addRoomData_btn_Click);
+            this.saveNewUserChanges_btn.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveNewUserChanges_btn.Location = new System.Drawing.Point(167, 256);
+            this.saveNewUserChanges_btn.Name = "saveNewUserChanges_btn";
+            this.saveNewUserChanges_btn.Size = new System.Drawing.Size(135, 49);
+            this.saveNewUserChanges_btn.TabIndex = 13;
+            this.saveNewUserChanges_btn.Text = "Save Changes";
+            this.saveNewUserChanges_btn.UseVisualStyleBackColor = true;
+            this.saveNewUserChanges_btn.Click += new System.EventHandler(this.saveNewUserChanges_btn_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 568);
+            this.Controls.Add(this.userDataPanel);
             this.Controls.Add(this.roomsDataPanel);
             this.Controls.Add(this.showRoomsData_btn);
             this.Controls.Add(this.bookAppointment_btn);
@@ -395,6 +554,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).EndInit();
             this.roomsDataPanel.ResumeLayout(false);
             this.roomsDataPanel.PerformLayout();
+            this.userDataPanel.ResumeLayout(false);
+            this.userDataPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.roomsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -434,5 +595,18 @@
         private System.Windows.Forms.TextBox roomType_txt;
         private System.Windows.Forms.TextBox roomFloorNumber_txt;
         private System.Windows.Forms.Button addRoomData_btn;
+        private System.Windows.Forms.Panel userDataPanel;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox userNewPassword_txt;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox userUsername_txt;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox userName_txt;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox userID_txt;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button saveNewUserChanges_btn;
+        private System.Windows.Forms.TextBox userConfirmNewPassword_txt;
+        private System.Windows.Forms.Label label14;
     }
 }

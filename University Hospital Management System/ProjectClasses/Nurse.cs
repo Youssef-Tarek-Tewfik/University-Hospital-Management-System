@@ -8,8 +8,8 @@ namespace University_Hospital_Management_System.ProjectClasses
 {
     public class Nurse : SystemPersona
     {
-        private string specialty;
-        private bool isPractitioner;
+        public string specialty;
+        public bool isPractitioner;
 
         public Nurse(string name, string userName, string password, string iD, string gender, string specialty, bool isPractitioner)
         {
