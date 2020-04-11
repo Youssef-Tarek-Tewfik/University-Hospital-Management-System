@@ -8,10 +8,10 @@ namespace University_Hospital_Management_System.ProjectForms
 {
     public partial class MainForm : Form
     {
-        SystemPersona onlineUser;
-        OracleDataAdapter adapter;
-        OracleCommandBuilder builder;
-        DataSet ds;
+        private SystemPersona onlineUser;
+        private OracleDataAdapter adapter;
+        private OracleCommandBuilder builder;
+        private DataSet ds;
 
         public MainForm()
         {
@@ -45,17 +45,39 @@ namespace University_Hospital_Management_System.ProjectForms
         private void searchPatientsData_btn_Click(object sender, EventArgs e)
         {
             //ClearMemory();
+            patientName_txt.Text = string.Empty;
             string cmdString = "SELECT * FROM Patient_History";
 
             if (!string.IsNullOrEmpty(patientID_txt.Text))
             {
                 cmdString += " WHERE PID=:id";
-            }
 
-            adapter = new OracleDataAdapter(cmdString, OrclDatabase.oracleConnectionString);
+                // Get name of patient and show it
+                OracleCommand cmd = new OracleCommand
+                {
+                    Connection = OrclDatabase.conn,
+                    CommandText = $"SELECT name FROM Patient WHERE id = {onlineUser.ID}",
+                    CommandType = CommandType.Text
+                };
 
-            if (!string.IsNullOrEmpty(patientID_txt.Text))
-            {
+                //cmd.Parameters.Add("pID", int.Parse(onlineUser.ID));
+                //cmd.Parameters.Add("pName", patientName_txt.Text);
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    patientName_txt.Text = (string)dr[0];
+                }
+                else
+                {
+                    MessageBox.Show("No patients found with entered ID", "Oops", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                cmd.Dispose();
+                dr.Dispose();
+                dr.Close();
+
+                adapter = new OracleDataAdapter(cmdString, OrclDatabase.oracleConnectionString);
                 adapter.SelectCommand.Parameters.Add("id", patientID_txt.Text);
             }
 
@@ -246,6 +268,12 @@ namespace University_Hospital_Management_System.ProjectForms
             userID_txt.Text = onlineUser.ID;
             userName_txt.Text = onlineUser.name;
             userUsername_txt.Text = onlineUser.userName;
+        }
+
+        private void showAppointments_btn_Click(object sender, EventArgs e)
+        {
+            AppointmentsForm appointmentsForm = new AppointmentsForm(onlineUser);
+            appointmentsForm.Show();
         }
 
         #endregion

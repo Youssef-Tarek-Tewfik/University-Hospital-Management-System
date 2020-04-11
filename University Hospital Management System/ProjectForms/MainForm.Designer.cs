@@ -36,6 +36,9 @@
             this.viewUserData_btn = new System.Windows.Forms.Button();
             this.showPatientsData_btn = new System.Windows.Forms.Button();
             this.patientsDataPanel = new System.Windows.Forms.Panel();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.saveChanges_btn = new System.Windows.Forms.Button();
             this.patientsDataGridView = new System.Windows.Forms.DataGridView();
             this.searchPatientsData_btn = new System.Windows.Forms.Button();
@@ -47,16 +50,6 @@
             this.bookAppointment_btn = new System.Windows.Forms.Button();
             this.showRoomsData_btn = new System.Windows.Forms.Button();
             this.roomsDataPanel = new System.Windows.Forms.Panel();
-            this.userDataPanel = new System.Windows.Forms.Panel();
-            this.userNewPassword_txt = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.userUsername_txt = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.userName_txt = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.userID_txt = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.addRoomData_btn = new System.Windows.Forms.Button();
             this.roomType_txt = new System.Windows.Forms.TextBox();
             this.roomFloorNumber_txt = new System.Windows.Forms.TextBox();
@@ -69,15 +62,26 @@
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
+            this.userDataPanel = new System.Windows.Forms.Panel();
+            this.saveNewUserChanges_btn = new System.Windows.Forms.Button();
             this.userConfirmNewPassword_txt = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.saveNewUserChanges_btn = new System.Windows.Forms.Button();
+            this.userNewPassword_txt = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.userUsername_txt = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.userName_txt = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.userID_txt = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.showAppointments_btn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.patientsDataPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
             this.roomsDataPanel.SuspendLayout();
-            this.userDataPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.roomsDataGridView)).BeginInit();
+            this.userDataPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -115,7 +119,6 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
             this.label1.Location = new System.Drawing.Point(12, 39);
@@ -136,7 +139,7 @@
             // 
             // showPatientsData_btn
             // 
-            this.showPatientsData_btn.Location = new System.Drawing.Point(17, 283);
+            this.showPatientsData_btn.Location = new System.Drawing.Point(17, 349);
             this.showPatientsData_btn.Name = "showPatientsData_btn";
             this.showPatientsData_btn.Size = new System.Drawing.Size(128, 58);
             this.showPatientsData_btn.TabIndex = 0;
@@ -146,6 +149,9 @@
             // 
             // patientsDataPanel
             // 
+            this.patientsDataPanel.Controls.Add(this.radioButton3);
+            this.patientsDataPanel.Controls.Add(this.radioButton2);
+            this.patientsDataPanel.Controls.Add(this.radioButton1);
             this.patientsDataPanel.Controls.Add(this.saveChanges_btn);
             this.patientsDataPanel.Controls.Add(this.patientsDataGridView);
             this.patientsDataPanel.Controls.Add(this.searchPatientsData_btn);
@@ -161,6 +167,39 @@
             this.patientsDataPanel.Visible = false;
             this.patientsDataPanel.VisibleChanged += new System.EventHandler(this.patientsDataPanel_VisibleChanged);
             // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(286, 137);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(132, 17);
+            this.radioButton3.TabIndex = 9;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "PreExisting_Conditions";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(156, 137);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(86, 17);
+            this.radioButton2.TabIndex = 8;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Drug_History";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(24, 137);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(96, 17);
+            this.radioButton1.TabIndex = 7;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Patient_History";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
             // saveChanges_btn
             // 
             this.saveChanges_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -175,9 +214,9 @@
             // patientsDataGridView
             // 
             this.patientsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.patientsDataGridView.Location = new System.Drawing.Point(3, 127);
+            this.patientsDataGridView.Location = new System.Drawing.Point(3, 160);
             this.patientsDataGridView.Name = "patientsDataGridView";
-            this.patientsDataGridView.Size = new System.Drawing.Size(500, 367);
+            this.patientsDataGridView.Size = new System.Drawing.Size(500, 334);
             this.patientsDataGridView.TabIndex = 6;
             // 
             // searchPatientsData_btn
@@ -217,7 +256,7 @@
             this.patientName_txt.Location = new System.Drawing.Point(97, 49);
             this.patientName_txt.MaxLength = 70;
             this.patientName_txt.Name = "patientName_txt";
-            this.patientName_txt.Size = new System.Drawing.Size(331, 29);
+            this.patientName_txt.Size = new System.Drawing.Size(397, 29);
             this.patientName_txt.TabIndex = 2;
             // 
             // label3
@@ -242,7 +281,7 @@
             // 
             // bookAppointment_btn
             // 
-            this.bookAppointment_btn.Location = new System.Drawing.Point(17, 164);
+            this.bookAppointment_btn.Location = new System.Drawing.Point(17, 230);
             this.bookAppointment_btn.Name = "bookAppointment_btn";
             this.bookAppointment_btn.Size = new System.Drawing.Size(128, 58);
             this.bookAppointment_btn.TabIndex = 5;
@@ -252,7 +291,7 @@
             // 
             // showRoomsData_btn
             // 
-            this.showRoomsData_btn.Location = new System.Drawing.Point(17, 224);
+            this.showRoomsData_btn.Location = new System.Drawing.Point(17, 290);
             this.showRoomsData_btn.Name = "showRoomsData_btn";
             this.showRoomsData_btn.Size = new System.Drawing.Size(128, 58);
             this.showRoomsData_btn.TabIndex = 6;
@@ -276,117 +315,6 @@
             this.roomsDataPanel.TabIndex = 7;
             this.roomsDataPanel.Visible = false;
             this.roomsDataPanel.VisibleChanged += new System.EventHandler(this.roomsDataPanel_VisibleChanged);
-            // 
-            // userDataPanel
-            // 
-            this.userDataPanel.Controls.Add(this.saveNewUserChanges_btn);
-            this.userDataPanel.Controls.Add(this.userConfirmNewPassword_txt);
-            this.userDataPanel.Controls.Add(this.label14);
-            this.userDataPanel.Controls.Add(this.userNewPassword_txt);
-            this.userDataPanel.Controls.Add(this.label13);
-            this.userDataPanel.Controls.Add(this.userUsername_txt);
-            this.userDataPanel.Controls.Add(this.label12);
-            this.userDataPanel.Controls.Add(this.userName_txt);
-            this.userDataPanel.Controls.Add(this.label11);
-            this.userDataPanel.Controls.Add(this.userID_txt);
-            this.userDataPanel.Controls.Add(this.label10);
-            this.userDataPanel.Controls.Add(this.label7);
-            this.userDataPanel.Location = new System.Drawing.Point(342, 27);
-            this.userDataPanel.Name = "userDataPanel";
-            this.userDataPanel.Size = new System.Drawing.Size(506, 538);
-            this.userDataPanel.TabIndex = 8;
-            this.userDataPanel.Visible = false;
-            // 
-            // userNewPassword_txt
-            // 
-            this.userNewPassword_txt.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F);
-            this.userNewPassword_txt.Location = new System.Drawing.Point(211, 164);
-            this.userNewPassword_txt.MaxLength = 30;
-            this.userNewPassword_txt.Name = "userNewPassword_txt";
-            this.userNewPassword_txt.Size = new System.Drawing.Size(199, 27);
-            this.userNewPassword_txt.TabIndex = 10;
-            this.userNewPassword_txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.userNewPassword_txt.UseSystemPasswordChar = true;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(20, 171);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(123, 20);
-            this.label13.TabIndex = 9;
-            this.label13.Text = "New Password :";
-            // 
-            // userUsername_txt
-            // 
-            this.userUsername_txt.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F);
-            this.userUsername_txt.Location = new System.Drawing.Point(115, 120);
-            this.userUsername_txt.Name = "userUsername_txt";
-            this.userUsername_txt.Size = new System.Drawing.Size(174, 27);
-            this.userUsername_txt.TabIndex = 8;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(20, 123);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(90, 20);
-            this.label12.TabIndex = 7;
-            this.label12.Text = "Username :";
-            // 
-            // userName_txt
-            // 
-            this.userName_txt.Enabled = false;
-            this.userName_txt.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F);
-            this.userName_txt.Location = new System.Drawing.Point(86, 82);
-            this.userName_txt.MaxLength = 50;
-            this.userName_txt.Name = "userName_txt";
-            this.userName_txt.ReadOnly = true;
-            this.userName_txt.Size = new System.Drawing.Size(291, 27);
-            this.userName_txt.TabIndex = 6;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(20, 85);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(60, 20);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "Name :";
-            // 
-            // userID_txt
-            // 
-            this.userID_txt.Enabled = false;
-            this.userID_txt.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F);
-            this.userID_txt.Location = new System.Drawing.Point(57, 49);
-            this.userID_txt.MaxLength = 5;
-            this.userID_txt.Name = "userID_txt";
-            this.userID_txt.ReadOnly = true;
-            this.userID_txt.Size = new System.Drawing.Size(71, 27);
-            this.userID_txt.TabIndex = 4;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(20, 52);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(32, 20);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "ID :";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(9, 13);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(213, 25);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "My Personal Data :";
             // 
             // addRoomData_btn
             // 
@@ -494,6 +422,37 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Rooms Data :";
             // 
+            // userDataPanel
+            // 
+            this.userDataPanel.Controls.Add(this.saveNewUserChanges_btn);
+            this.userDataPanel.Controls.Add(this.userConfirmNewPassword_txt);
+            this.userDataPanel.Controls.Add(this.label14);
+            this.userDataPanel.Controls.Add(this.userNewPassword_txt);
+            this.userDataPanel.Controls.Add(this.label13);
+            this.userDataPanel.Controls.Add(this.userUsername_txt);
+            this.userDataPanel.Controls.Add(this.label12);
+            this.userDataPanel.Controls.Add(this.userName_txt);
+            this.userDataPanel.Controls.Add(this.label11);
+            this.userDataPanel.Controls.Add(this.userID_txt);
+            this.userDataPanel.Controls.Add(this.label10);
+            this.userDataPanel.Controls.Add(this.label7);
+            this.userDataPanel.Location = new System.Drawing.Point(313, 27);
+            this.userDataPanel.Name = "userDataPanel";
+            this.userDataPanel.Size = new System.Drawing.Size(506, 538);
+            this.userDataPanel.TabIndex = 8;
+            this.userDataPanel.Visible = false;
+            // 
+            // saveNewUserChanges_btn
+            // 
+            this.saveNewUserChanges_btn.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveNewUserChanges_btn.Location = new System.Drawing.Point(167, 256);
+            this.saveNewUserChanges_btn.Name = "saveNewUserChanges_btn";
+            this.saveNewUserChanges_btn.Size = new System.Drawing.Size(135, 49);
+            this.saveNewUserChanges_btn.TabIndex = 13;
+            this.saveNewUserChanges_btn.Text = "Save Changes";
+            this.saveNewUserChanges_btn.UseVisualStyleBackColor = true;
+            this.saveNewUserChanges_btn.Click += new System.EventHandler(this.saveNewUserChanges_btn_Click);
+            // 
             // userConfirmNewPassword_txt
             // 
             this.userConfirmNewPassword_txt.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F);
@@ -515,31 +474,122 @@
             this.label14.TabIndex = 11;
             this.label14.Text = "Confirm New Password :";
             // 
-            // saveNewUserChanges_btn
+            // userNewPassword_txt
             // 
-            this.saveNewUserChanges_btn.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveNewUserChanges_btn.Location = new System.Drawing.Point(167, 256);
-            this.saveNewUserChanges_btn.Name = "saveNewUserChanges_btn";
-            this.saveNewUserChanges_btn.Size = new System.Drawing.Size(135, 49);
-            this.saveNewUserChanges_btn.TabIndex = 13;
-            this.saveNewUserChanges_btn.Text = "Save Changes";
-            this.saveNewUserChanges_btn.UseVisualStyleBackColor = true;
-            this.saveNewUserChanges_btn.Click += new System.EventHandler(this.saveNewUserChanges_btn_Click);
+            this.userNewPassword_txt.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F);
+            this.userNewPassword_txt.Location = new System.Drawing.Point(211, 164);
+            this.userNewPassword_txt.MaxLength = 30;
+            this.userNewPassword_txt.Name = "userNewPassword_txt";
+            this.userNewPassword_txt.Size = new System.Drawing.Size(199, 27);
+            this.userNewPassword_txt.TabIndex = 10;
+            this.userNewPassword_txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.userNewPassword_txt.UseSystemPasswordChar = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(20, 171);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(123, 20);
+            this.label13.TabIndex = 9;
+            this.label13.Text = "New Password :";
+            // 
+            // userUsername_txt
+            // 
+            this.userUsername_txt.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F);
+            this.userUsername_txt.Location = new System.Drawing.Point(115, 120);
+            this.userUsername_txt.Name = "userUsername_txt";
+            this.userUsername_txt.Size = new System.Drawing.Size(174, 27);
+            this.userUsername_txt.TabIndex = 8;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(20, 123);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(90, 20);
+            this.label12.TabIndex = 7;
+            this.label12.Text = "Username :";
+            // 
+            // userName_txt
+            // 
+            this.userName_txt.Enabled = false;
+            this.userName_txt.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F);
+            this.userName_txt.Location = new System.Drawing.Point(86, 82);
+            this.userName_txt.MaxLength = 50;
+            this.userName_txt.Name = "userName_txt";
+            this.userName_txt.ReadOnly = true;
+            this.userName_txt.Size = new System.Drawing.Size(291, 27);
+            this.userName_txt.TabIndex = 6;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(20, 85);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(60, 20);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Name :";
+            // 
+            // userID_txt
+            // 
+            this.userID_txt.Enabled = false;
+            this.userID_txt.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F);
+            this.userID_txt.Location = new System.Drawing.Point(57, 49);
+            this.userID_txt.MaxLength = 5;
+            this.userID_txt.Name = "userID_txt";
+            this.userID_txt.ReadOnly = true;
+            this.userID_txt.Size = new System.Drawing.Size(71, 27);
+            this.userID_txt.TabIndex = 4;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(20, 52);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(32, 20);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "ID :";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(9, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(213, 25);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "My Personal Data :";
+            // 
+            // showAppointments_btn
+            // 
+            this.showAppointments_btn.Location = new System.Drawing.Point(17, 169);
+            this.showAppointments_btn.Name = "showAppointments_btn";
+            this.showAppointments_btn.Size = new System.Drawing.Size(128, 58);
+            this.showAppointments_btn.TabIndex = 9;
+            this.showAppointments_btn.Text = "Show Appointments";
+            this.showAppointments_btn.UseVisualStyleBackColor = true;
+            this.showAppointments_btn.Click += new System.EventHandler(this.showAppointments_btn_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 568);
-            this.Controls.Add(this.userDataPanel);
-            this.Controls.Add(this.roomsDataPanel);
+            this.Controls.Add(this.patientsDataPanel);
+            this.Controls.Add(this.showAppointments_btn);
             this.Controls.Add(this.showRoomsData_btn);
             this.Controls.Add(this.bookAppointment_btn);
-            this.Controls.Add(this.patientsDataPanel);
             this.Controls.Add(this.showPatientsData_btn);
             this.Controls.Add(this.viewUserData_btn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.userDataPanel);
+            this.Controls.Add(this.roomsDataPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
@@ -554,9 +604,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).EndInit();
             this.roomsDataPanel.ResumeLayout(false);
             this.roomsDataPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.roomsDataGridView)).EndInit();
             this.userDataPanel.ResumeLayout(false);
             this.userDataPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.roomsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -608,5 +658,9 @@
         private System.Windows.Forms.Button saveNewUserChanges_btn;
         private System.Windows.Forms.TextBox userConfirmNewPassword_txt;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Button showAppointments_btn;
     }
 }
