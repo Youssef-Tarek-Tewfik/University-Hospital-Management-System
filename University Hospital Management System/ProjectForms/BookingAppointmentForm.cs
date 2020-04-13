@@ -18,6 +18,7 @@ namespace University_Hospital_Management_System.ProjectForms
             InitializeComponent();
         }
 
+        // 5. Select multiple rows using stored procedures
         private void specialtyComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             doctorComboBox.Items.Clear();
@@ -43,6 +44,7 @@ namespace University_Hospital_Management_System.ProjectForms
             dr.Close();
         }
 
+        // 6. Insert using stored procedure
         private void bookAppointment_btn_Click(object sender, EventArgs e)
         {
             if (specialtyComboBox.SelectedItem != null && doctorComboBox.SelectedItem != null && roomTypeComboBox.SelectedItem != null)
@@ -103,6 +105,7 @@ namespace University_Hospital_Management_System.ProjectForms
             fees_txt.Text = randomFees.Next(200, 2000).ToString();
         }
 
+        // 3. Insert rows (without using stored procedure)
         private void InsertIntoAttendsTable(string staffID, string roomID)
         {
             OracleCommand cmd = new OracleCommand
@@ -112,6 +115,7 @@ namespace University_Hospital_Management_System.ProjectForms
                 CommandType = CommandType.Text
             };
 
+            // 6. Insert, Update using stored procedures
             OracleCommand cmd2 = new OracleCommand
             { 
                 Connection = OrclDatabase.conn,

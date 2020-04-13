@@ -27,7 +27,7 @@ namespace University_Hospital_Management_System.ProjectForms
         #region UI Methods
         private void MainForm_Load(object sender, EventArgs e)
         {
-            label1.Text += label1.Text == null ? label1.Text = "" : label1.Text = onlineUser.name;
+            label1.Text = $"Welcome, {onlineUser.name}";
 
             if (onlineUser.GetType() == typeof(Doctor) || onlineUser.GetType() == typeof(Nurse))
             {
@@ -52,6 +52,7 @@ namespace University_Hospital_Management_System.ProjectForms
             {
                 cmdString += " WHERE PID=:id";
 
+                // 2. Select one or more rows using bind parameters
                 // Get name of patient and show it
                 OracleCommand cmd = new OracleCommand
                 {
@@ -77,10 +78,12 @@ namespace University_Hospital_Management_System.ProjectForms
                 dr.Dispose();
                 dr.Close();
 
-                adapter = new OracleDataAdapter(cmdString, OrclDatabase.oracleConnectionString);
-                adapter.SelectCommand.Parameters.Add("id", patientID_txt.Text);
+                //adapter = new OracleDataAdapter(cmdString, OrclDatabase.oracleConnectionString);
+                //adapter.SelectCommand.Parameters.Add("id", patientID_txt.Text);
             }
 
+            adapter = new OracleDataAdapter(cmdString, OrclDatabase.oracleConnectionString);
+            adapter.SelectCommand.Parameters.Add("id", patientID_txt.Text);
             ds = new DataSet("Patient_History");
             adapter.Fill(ds);
             patientsDataGridView.DataSource = ds.Tables[0];
@@ -223,6 +226,7 @@ namespace University_Hospital_Management_System.ProjectForms
             appointmentForm.Show();
         }
 
+        // 6. Update using stored procedures
         private void saveNewUserChanges_btn_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(userUsername_txt.Text) && !string.IsNullOrWhiteSpace(userUsername_txt.Text) &&
@@ -279,6 +283,7 @@ namespace University_Hospital_Management_System.ProjectForms
         #endregion
 
         #region Helper Methods
+        // 3. Delete rows (without procedures)
         private void DeleteStaffUser()
         {
             OracleCommand cmd = new OracleCommand

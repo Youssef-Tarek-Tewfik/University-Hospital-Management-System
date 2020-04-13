@@ -38,9 +38,5 @@ namespace University_Hospital_Management_System.ProjectClasses
         public string type;
         public string gender;
 
-        public void UpdatePersonalData()
-        {
-
-        }
     }
 }

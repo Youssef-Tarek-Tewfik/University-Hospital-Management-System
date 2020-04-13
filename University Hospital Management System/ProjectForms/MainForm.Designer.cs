@@ -588,8 +588,8 @@
             this.Controls.Add(this.viewUserData_btn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.userDataPanel);
             this.Controls.Add(this.roomsDataPanel);
+            this.Controls.Add(this.userDataPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;

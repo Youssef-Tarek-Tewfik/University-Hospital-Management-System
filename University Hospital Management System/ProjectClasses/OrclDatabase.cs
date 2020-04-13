@@ -26,6 +26,7 @@ namespace University_Hospital_Management_System.ProjectClasses
         /// <param name="usernameEntered"> The username entered in textbox </param>
         /// <param name="passwordEntered"> The password entered in textbox </param>
         /// <param name="userType"> Current User Type entering the system </param>
+        // 2. Select one or more rows using bind variables and command Parameters
         public static void SignInUser(string usernameEntered, string passwordEntered, string userType)
         {
             string staffType = string.Empty;
@@ -119,6 +120,7 @@ namespace University_Hospital_Management_System.ProjectClasses
         /// <param name="type"> The type of new registered user </param>
         /// <param name="isPractitionerOrResident"> Is the Doctor or Nurse a Practitioner or Resident or not respectively </param>
         /// <returns></returns>
+        // 3. Insert rows (without procedures)
         private static int SetUserType(string type, string isPractitionerOrResident)
         {
             OracleCommand cmd = new OracleCommand
@@ -134,6 +136,7 @@ namespace University_Hospital_Management_System.ProjectClasses
             return queryResult;
         }
 
+        // 2. Select one or more rows using bind variables and command Parameters
         private static string CheckIfUserIsDoctor(int ID, out string isPractitionerOrResident)
         {
             OracleCommand cmd = new OracleCommand
@@ -159,6 +162,7 @@ namespace University_Hospital_Management_System.ProjectClasses
             return "Nurse";
         }
 
+        // 3. Insert rows (without procedures)
         public static void RegisterNewPatientUser(string name, string username, string password, string contactNumber, string age, string gender)
         {
             OracleCommand cmd = new OracleCommand
