@@ -27,7 +27,7 @@ namespace University_Hospital_Management_System.ProjectForms
         #region UI Methods
         private void MainForm_Load(object sender, EventArgs e)
         {
-            label1.Text = $"Welcome, {onlineUser.name}";
+            label1.Text += onlineUser.name;
 
             if (onlineUser.GetType() == typeof(Doctor) || onlineUser.GetType() == typeof(Nurse))
             {
@@ -238,11 +238,12 @@ namespace University_Hospital_Management_System.ProjectForms
                     OracleCommand cmd = new OracleCommand
                     {
                         Connection = OrclDatabase.conn,
-                        CommandText = "UpdateUserData",
+                        CommandText = (onlineUser.GetType() == typeof(Doctor) || onlineUser.GetType() == typeof(Nurse)) ?
+                                        "UpdateStaffData" : "UpdateUserData",
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    cmd.Parameters.Add("patientID", int.Parse(onlineUser.ID));
+                    cmd.Parameters.Add("ID", int.Parse(onlineUser.ID));
                     cmd.Parameters.Add("newUsername", userUsername_txt.Text);
                     cmd.Parameters.Add("newPassword", userNewPassword_txt.Text);
 

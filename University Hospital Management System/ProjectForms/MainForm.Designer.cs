@@ -106,14 +106,14 @@
             // optionsToolStripMenuItem1
             // 
             this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
-            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
+            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.optionsToolStripMenuItem1.Text = "Sign Out";
             this.optionsToolStripMenuItem1.Click += new System.EventHandler(this.optionsToolStripMenuItem1_Click);
             // 
             // deleteAccountToolStripMenuItem
             // 
             this.deleteAccountToolStripMenuItem.Name = "deleteAccountToolStripMenuItem";
-            this.deleteAccountToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.deleteAccountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteAccountToolStripMenuItem.Text = "Delete Account";
             this.deleteAccountToolStripMenuItem.Click += new System.EventHandler(this.deleteAccountToolStripMenuItem_Click);
             // 
@@ -123,7 +123,7 @@
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
             this.label1.Location = new System.Drawing.Point(12, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 26);
+            this.label1.Size = new System.Drawing.Size(261, 26);
             this.label1.TabIndex = 1;
             this.label1.Text = "Welcome, ";
             // 
@@ -580,16 +580,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 568);
-            this.Controls.Add(this.patientsDataPanel);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.showAppointments_btn);
             this.Controls.Add(this.showRoomsData_btn);
             this.Controls.Add(this.bookAppointment_btn);
             this.Controls.Add(this.showPatientsData_btn);
             this.Controls.Add(this.viewUserData_btn);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.roomsDataPanel);
             this.Controls.Add(this.userDataPanel);
+            this.Controls.Add(this.patientsDataPanel);
+            this.Controls.Add(this.roomsDataPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
