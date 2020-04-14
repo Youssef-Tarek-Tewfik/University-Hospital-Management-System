@@ -56,24 +56,30 @@ namespace University_Hospital_Management_System.ProjectForms
                 case "Doctor":
                     label6.Visible = true;
                     specialty_comboBox.Visible = true;
-                    contactNumber_txt.Enabled = false;
-                    age_txt.Enabled = false;
+                    contactNumber_txt.Visible = false;
+                    age_txt.Visible = false;
                     groupBox3.Visible = true;
+                    label7.Visible = false;
+                    label8.Visible = false;
                     groupBox3.Text = "Resident?"; break;
 
                 case "Nurse":
                     label6.Visible = true;
                     specialty_comboBox.Visible = true;
-                    contactNumber_txt.Enabled = false;
-                    age_txt.Enabled = false;
+                    contactNumber_txt.Visible = false;
+                    age_txt.Visible = false;
                     groupBox3.Visible = true;
+                    label7.Visible = false;
+                    label8.Visible = false;
                     groupBox3.Text = "Practitioner?"; break;
 
                 default:
                     label6.Visible = false;
                     specialty_comboBox.Visible = false;
-                    contactNumber_txt.Enabled = true;
-                    age_txt.Enabled = true;
+                    contactNumber_txt.Visible = true;
+                    age_txt.Visible = true;
+                    label7.Visible = true;
+                    label8.Visible = true;
                     groupBox3.Visible = false; break;
             }
         }

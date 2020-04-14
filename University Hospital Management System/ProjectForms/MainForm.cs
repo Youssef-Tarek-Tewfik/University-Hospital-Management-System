@@ -31,13 +31,15 @@ namespace University_Hospital_Management_System.ProjectForms
 
             if (onlineUser.GetType() == typeof(Doctor) || onlineUser.GetType() == typeof(Nurse))
             {
-                showPatientsData_btn.Visible = true;
-                showRoomsData_btn.Visible = true;
+                bookAppointment_btn.Visible = false;
+                reportsComboBox.SelectedIndex = 0;
             }
             else if (onlineUser.GetType() == typeof(Patient))
             {
                 showPatientsData_btn.Visible = false;
                 showRoomsData_btn.Visible = false;
+                viewReports_btn.Visible = false;
+                reportsComboBox.Visible = false;
             }
         }
 
@@ -172,7 +174,8 @@ namespace University_Hospital_Management_System.ProjectForms
                 OracleCommand cmd = new OracleCommand
                 {
                     Connection = OrclDatabase.conn,
-                    CommandText = $"DELETE FROM {onlineUser.type} WHERE ID = :id",
+                    CommandText = $@"DELETE FROM {((onlineUser.GetType() == typeof(Doctor) || onlineUser.GetType() == typeof(Nurse)) ?
+                                        "Staff" : "Patient")} WHERE ID = :id",
                     CommandType = CommandType.Text
                 };
 
@@ -281,6 +284,12 @@ namespace University_Hospital_Management_System.ProjectForms
             appointmentsForm.Show();
         }
 
+        private void viewReports_btn_Click(object sender, EventArgs e)
+        {
+            ReportsForm reportsForm = new ReportsForm(reportsComboBox.SelectedItem.ToString());
+            reportsForm.Show();
+        }
+
         #endregion
 
         #region Helper Methods
@@ -290,8 +299,8 @@ namespace University_Hospital_Management_System.ProjectForms
             OracleCommand cmd = new OracleCommand
             {
                 Connection = OrclDatabase.conn,
-                CommandText = $"DELETE FROM Staff WHERE ID = :id",
-                CommandType = CommandType.Text
+                CommandText = "DeleteDoctorData",
+                CommandType = CommandType.StoredProcedure
             };
 
             cmd.Parameters.Add("id", onlineUser.ID);

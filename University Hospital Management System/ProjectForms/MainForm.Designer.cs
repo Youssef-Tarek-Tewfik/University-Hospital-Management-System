@@ -76,6 +76,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.showAppointments_btn = new System.Windows.Forms.Button();
+            this.viewReports_btn = new System.Windows.Forms.Button();
+            this.reportsComboBox = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.patientsDataPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
@@ -106,24 +108,25 @@
             // optionsToolStripMenuItem1
             // 
             this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
-            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
             this.optionsToolStripMenuItem1.Text = "Sign Out";
             this.optionsToolStripMenuItem1.Click += new System.EventHandler(this.optionsToolStripMenuItem1_Click);
             // 
             // deleteAccountToolStripMenuItem
             // 
             this.deleteAccountToolStripMenuItem.Name = "deleteAccountToolStripMenuItem";
-            this.deleteAccountToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteAccountToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.deleteAccountToolStripMenuItem.Text = "Delete Account";
             this.deleteAccountToolStripMenuItem.Click += new System.EventHandler(this.deleteAccountToolStripMenuItem_Click);
             // 
             // label1
             // 
+            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
             this.label1.Location = new System.Drawing.Point(12, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(261, 26);
+            this.label1.Size = new System.Drawing.Size(112, 26);
             this.label1.TabIndex = 1;
             this.label1.Text = "Welcome, ";
             // 
@@ -575,11 +578,33 @@
             this.showAppointments_btn.UseVisualStyleBackColor = true;
             this.showAppointments_btn.Click += new System.EventHandler(this.showAppointments_btn_Click);
             // 
+            // viewReports_btn
+            // 
+            this.viewReports_btn.Location = new System.Drawing.Point(17, 413);
+            this.viewReports_btn.Name = "viewReports_btn";
+            this.viewReports_btn.Size = new System.Drawing.Size(128, 58);
+            this.viewReports_btn.TabIndex = 10;
+            this.viewReports_btn.Text = "View Reports";
+            this.viewReports_btn.UseVisualStyleBackColor = true;
+            this.viewReports_btn.Click += new System.EventHandler(this.viewReports_btn_Click);
+            // 
+            // reportsComboBox
+            // 
+            this.reportsComboBox.FormattingEnabled = true;
+            this.reportsComboBox.Items.AddRange(new object[] {
+            "Appointments"});
+            this.reportsComboBox.Location = new System.Drawing.Point(17, 479);
+            this.reportsComboBox.Name = "reportsComboBox";
+            this.reportsComboBox.Size = new System.Drawing.Size(148, 21);
+            this.reportsComboBox.TabIndex = 11;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 568);
+            this.Controls.Add(this.reportsComboBox);
+            this.Controls.Add(this.viewReports_btn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.showAppointments_btn);
             this.Controls.Add(this.showRoomsData_btn);
@@ -662,5 +687,7 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Button showAppointments_btn;
+        private System.Windows.Forms.Button viewReports_btn;
+        private System.Windows.Forms.ComboBox reportsComboBox;
     }
 }
