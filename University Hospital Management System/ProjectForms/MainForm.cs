@@ -30,6 +30,11 @@ namespace University_Hospital_Management_System.ProjectForms
             label1.Text += onlineUser.name;
 
             if (onlineUser.GetType() == typeof(Doctor) || onlineUser.GetType() == typeof(Nurse))
+                deleteAccountToolStripMenuItem.Visible = false;
+            else
+                deleteAccountToolStripMenuItem.Visible = true;
+
+            if (onlineUser.GetType() == typeof(Doctor) || onlineUser.GetType() == typeof(Nurse))
             {
                 bookAppointment_btn.Visible = false;
                 reportsComboBox.SelectedIndex = 0;
@@ -168,32 +173,41 @@ namespace University_Hospital_Management_System.ProjectForms
         private void deleteAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult deleteResult = MessageBox.Show("Are you sure to delete your account?", "Delete account", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
+            string[] info_to_delete = {@"DELETE FROM assigned_for WHERE ID = :id",
+                @"DELETE FROM drug_history WHERE ID = :id",
+                @"DELETE FROM attends WHERE ID = :id",
+                @"DELETE FROM preexisting_condition WHERE ID = :id",
+                @"DELETE FROM Patient_history WHERE ID = :id",
+                @"DELETE FROM Patient WHERE ID = :id" };
             if (deleteResult == DialogResult.Yes)
             {
-                OracleCommand cmd = new OracleCommand
+                for (int i = 0; i < info_to_delete.Length; ++i)
                 {
-                    Connection = OrclDatabase.conn,
-                    CommandText = $@"DELETE FROM {((onlineUser.GetType() == typeof(Doctor) || onlineUser.GetType() == typeof(Nurse)) ?
-                                        "Staff" : "Patient")} WHERE ID = :id",
-                    CommandType = CommandType.Text
-                };
+                    try
+                    {
+                        OracleCommand cmd = new OracleCommand
+                        {
+                            Connection = OrclDatabase.conn,
+                            CommandText = info_to_delete[i],
+                            CommandType = CommandType.Text
+                        };
 
-                cmd.Parameters.Add("id", onlineUser.ID);
+                        cmd.Parameters.Add("id", onlineUser.ID);
 
-                if (onlineUser.type == "Doctor" || onlineUser.type == "Nurse")
-                {
-                    DeleteStaffUser();
-                }
+                        int r = cmd.ExecuteNonQuery();
 
-                int r = cmd.ExecuteNonQuery();
+                        if (r != -1 && i == info_to_delete.Length - 1)
+                        {
+                            onlineUser = null;
+                            this.Dispose();
+                            this.Close();
+                            MessageBox.Show("User deleted from Database", "Operation Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    catch
+                    {
 
-                if (r != -1)
-                {
-                    onlineUser = null;
-                    this.Dispose();
-                    this.Close();
-                    MessageBox.Show("User deleted from Database", "Operation Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
         }
