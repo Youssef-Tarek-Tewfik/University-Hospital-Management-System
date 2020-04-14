@@ -30,10 +30,10 @@
         {
             this.crystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.appointmentTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.generateReport_btn = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.appointmentTypeComboBox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,8 +45,16 @@
             this.crystalReportViewer.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.crystalReportViewer.Location = new System.Drawing.Point(0, 262);
             this.crystalReportViewer.Name = "crystalReportViewer";
+            this.crystalReportViewer.ShowCloseButton = false;
+            this.crystalReportViewer.ShowCopyButton = false;
+            this.crystalReportViewer.ShowExportButton = false;
+            this.crystalReportViewer.ShowGotoPageButton = false;
+            this.crystalReportViewer.ShowGroupTreeButton = false;
+            this.crystalReportViewer.ShowPageNavigateButtons = false;
+            this.crystalReportViewer.ShowPrintButton = false;
             this.crystalReportViewer.Size = new System.Drawing.Size(1119, 479);
             this.crystalReportViewer.TabIndex = 0;
+            this.crystalReportViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
             // panel1
             // 
@@ -58,6 +66,24 @@
             this.panel1.Size = new System.Drawing.Size(246, 253);
             this.panel1.TabIndex = 1;
             this.panel1.Visible = false;
+            // 
+            // appointmentTypeComboBox
+            // 
+            this.appointmentTypeComboBox.FormattingEnabled = true;
+            this.appointmentTypeComboBox.Location = new System.Drawing.Point(66, 54);
+            this.appointmentTypeComboBox.Name = "appointmentTypeComboBox";
+            this.appointmentTypeComboBox.Size = new System.Drawing.Size(157, 21);
+            this.appointmentTypeComboBox.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 54);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 19);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Type :";
             // 
             // label1
             // 
@@ -79,24 +105,6 @@
             this.generateReport_btn.Text = "Generate Report";
             this.generateReport_btn.UseVisualStyleBackColor = true;
             this.generateReport_btn.Click += new System.EventHandler(this.generateReport_btn_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 19);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Type :";
-            // 
-            // appointmentTypeComboBox
-            // 
-            this.appointmentTypeComboBox.FormattingEnabled = true;
-            this.appointmentTypeComboBox.Location = new System.Drawing.Point(66, 54);
-            this.appointmentTypeComboBox.Name = "appointmentTypeComboBox";
-            this.appointmentTypeComboBox.Size = new System.Drawing.Size(157, 21);
-            this.appointmentTypeComboBox.TabIndex = 2;
             // 
             // ReportsForm
             // 

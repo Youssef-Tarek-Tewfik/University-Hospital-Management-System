@@ -104,6 +104,12 @@
       <DependentUpon>AppointmentsReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ProjectReports\PatientsReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatientsReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ProjectForms\AppointmentsForm.resx">
       <DependentUpon>AppointmentsForm.cs</DependentUpon>
@@ -126,6 +132,10 @@
     <EmbeddedResource Include="ProjectReports\AppointmentsReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>AppointmentsReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectReports\PatientsReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PatientsReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
