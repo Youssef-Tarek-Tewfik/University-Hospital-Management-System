@@ -42,5 +42,10 @@ namespace University_Hospital_Management_System.ProjectForms
         {
             onlineUserType = ((RadioButton)sender).Text;
         }
+
+        private void show_password_cb_CheckedChanged(object sender, EventArgs e)
+        {
+            password_txt.UseSystemPasswordChar = show_password_cb.Checked ? false : true;
+        }
     }
 }
