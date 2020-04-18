@@ -304,6 +304,12 @@ namespace University_Hospital_Management_System.ProjectForms
             reportsForm.Show();
         }
 
+        private void findFloorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FindFloorForm form = new FindFloorForm();
+            form.Show();
+        }
+
         #endregion
 
         #region Helper Methods

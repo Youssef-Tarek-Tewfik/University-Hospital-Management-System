@@ -38,7 +38,8 @@ namespace University_Hospital_Management_System.ProjectForms
                 //case "":
                 //    panel1.Visible = true; break;
 
-                default: break;
+                default:
+                    break;
             }
 
         }
@@ -48,8 +49,13 @@ namespace University_Hospital_Management_System.ProjectForms
             switch (ReportName)
             {
                 case "Appointments":
-                    appointmentsReport.SetParameterValue(0, appointmentTypeComboBox.SelectedItem.ToString());
-                    crystalReportViewer.ReportSource = appointmentsReport; break;
+                    if (appointmentTypeComboBox.SelectedItem != null)
+                    {
+                        appointmentsReport.SetParameterValue(0, appointmentTypeComboBox.SelectedItem.ToString());
+                    }
+
+                    crystalReportViewer.ReportSource = appointmentsReport;
+                    break;
 
                 //case "":
                 //    panel1.Visible = true; break;

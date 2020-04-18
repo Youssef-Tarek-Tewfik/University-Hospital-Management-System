@@ -110,7 +110,7 @@
             // 
             // bookAppointment_btn
             // 
-            this.bookAppointment_btn.Location = new System.Drawing.Point(100, 266);
+            this.bookAppointment_btn.Location = new System.Drawing.Point(159, 254);
             this.bookAppointment_btn.Name = "bookAppointment_btn";
             this.bookAppointment_btn.Size = new System.Drawing.Size(126, 45);
             this.bookAppointment_btn.TabIndex = 6;
@@ -165,7 +165,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 568);
+            this.ClientSize = new System.Drawing.Size(506, 313);
             this.Controls.Add(this.roomTypeComboBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.fees_txt);

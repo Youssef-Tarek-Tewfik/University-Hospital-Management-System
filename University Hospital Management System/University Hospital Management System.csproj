@@ -80,6 +80,12 @@
     <Compile Include="ProjectForms\BookingAppointmentForm.Designer.cs">
       <DependentUpon>BookingAppointmentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProjectForms\FindFloorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectForms\FindFloorForm.Designer.cs">
+      <DependentUpon>FindFloorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectForms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectForms\BookingAppointmentForm.resx">
       <DependentUpon>BookingAppointmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectForms\FindFloorForm.resx">
+      <DependentUpon>FindFloorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectForms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

@@ -78,6 +78,7 @@
             this.showAppointments_btn = new System.Windows.Forms.Button();
             this.viewReports_btn = new System.Windows.Forms.Button();
             this.reportsComboBox = new System.Windows.Forms.ComboBox();
+            this.findFloorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.patientsDataPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
@@ -89,7 +90,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.optionsToolStripMenuItem});
+            this.optionsToolStripMenuItem,
+            this.findFloorToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(926, 24);
@@ -598,6 +600,13 @@
             this.reportsComboBox.Size = new System.Drawing.Size(148, 21);
             this.reportsComboBox.TabIndex = 11;
             // 
+            // findFloorToolStripMenuItem
+            // 
+            this.findFloorToolStripMenuItem.Name = "findFloorToolStripMenuItem";
+            this.findFloorToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.findFloorToolStripMenuItem.Text = "Find Floor #";
+            this.findFloorToolStripMenuItem.Click += new System.EventHandler(this.findFloorToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -689,5 +698,6 @@
         private System.Windows.Forms.Button showAppointments_btn;
         private System.Windows.Forms.Button viewReports_btn;
         private System.Windows.Forms.ComboBox reportsComboBox;
+        private System.Windows.Forms.ToolStripMenuItem findFloorToolStripMenuItem;
     }
 }

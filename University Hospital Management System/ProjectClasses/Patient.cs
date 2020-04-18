@@ -10,7 +10,6 @@ namespace University_Hospital_Management_System.ProjectClasses
     {
         private int age;
         private string contactNumber;
-        private Doctor primaryCaretaker;
 
         public Patient(string name, string userName, string password, string iD, string gender, int age, string contactNumber)
         {
