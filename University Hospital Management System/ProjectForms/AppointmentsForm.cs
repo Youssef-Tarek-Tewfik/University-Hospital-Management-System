@@ -83,7 +83,7 @@ namespace University_Hospital_Management_System.ProjectForms
             }
             else
             {
-                MessageBox.Show("Select a row first to cancel", "Oops", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                MessageBox.Show("Select a row first to cancel", "Oops", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
