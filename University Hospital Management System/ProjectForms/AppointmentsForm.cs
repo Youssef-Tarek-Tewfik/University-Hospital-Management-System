@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Oracle.DataAccess.Client;
-using Oracle.DataAccess.Types;
 using University_Hospital_Management_System.ProjectClasses;
 
 namespace University_Hospital_Management_System.ProjectForms
@@ -59,31 +52,38 @@ namespace University_Hospital_Management_System.ProjectForms
         // 6. Update & Delete rows using stored procedures
         private void Cancel_btn_Click(object sender, EventArgs e)
         {
-            DialogResult deleteResult = MessageBox.Show("Are you sure to cancel the selected Appointment? This operation cannot be returned!", "Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (deleteResult == DialogResult.Yes)
+            if (appointmentsDataGridView.SelectedCells.Count > 0)
             {
-                OracleCommand cmd = new OracleCommand
+                DialogResult deleteResult = MessageBox.Show("Are you sure to cancel the selected Appointment? This operation cannot be returned!", "Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (deleteResult == DialogResult.Yes)
                 {
-                    Connection = OrclDatabase.conn,
-                    CommandText = "CancelAppointment",
-                    CommandType = CommandType.StoredProcedure
-                };
+                    OracleCommand cmd = new OracleCommand
+                    {
+                        Connection = OrclDatabase.conn,
+                        CommandText = "CancelAppointment",
+                        CommandType = CommandType.StoredProcedure
+                    };
 
-                cmd.Parameters.Add("userID", onlineUser.ID);
-                cmd.Parameters.Add("appID", appointmentsDataGridView.CurrentCell.OwningRow.Cells[0].Value);
+                    cmd.Parameters.Add("userID", onlineUser.ID);
+                    cmd.Parameters.Add("appID", appointmentsDataGridView.CurrentCell.OwningRow.Cells[0].Value);
 
-                int result = cmd.ExecuteNonQuery();
+                    int result = cmd.ExecuteNonQuery();
 
-                if (result == -1)
-                {
-                    appointmentsDataGridView.Rows.RemoveAt(appointmentsDataGridView.CurrentCell.OwningRow.Index);
-                    MessageBox.Show("Appointment Canceled", "Operation Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (result == -1)
+                    {
+                        appointmentsDataGridView.Rows.RemoveAt(appointmentsDataGridView.CurrentCell.OwningRow.Index);
+                        MessageBox.Show("Appointment Canceled", "Operation Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Error");
-                }
+            }
+            else
+            {
+                MessageBox.Show("Select a row first to cancel", "Oops", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             }
         }
 
