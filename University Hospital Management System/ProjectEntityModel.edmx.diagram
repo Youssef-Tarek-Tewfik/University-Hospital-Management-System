@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d0b4903905194e79bfb8eb35e4627760" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.APPOINTMENT" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ATTEND" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DOCTOR" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DRUG_HISTORY" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.NURSE" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PATIENT" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PATIENT_HISTORY" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PREEXISTING_CONDITIONS" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ROOM" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.STAFF" Width="1.5" PointX="3" PointY="14.125" IsExpanded="true" />
+        <AssociationConnector Association="Model.SYS_C0012108" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0012105" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0012106" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0012107" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0012078" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0012101" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0012082" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0012103" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.ASSIGNED_FOR" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

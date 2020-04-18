@@ -1,0 +1,684 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="APPOINTMENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="ATIME" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="ADATE" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="FEES" Type="number" Precision="4" Scale="0" Nullable="false" />
+          <Property Name="TYPE" Type="varchar2" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ASSIGNED_FOR">
+          <Key>
+            <PropertyRef Name="PID" />
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="PID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="RID" Type="number" Precision="3" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ATTENDS">
+          <Key>
+            <PropertyRef Name="PID" />
+            <PropertyRef Name="SID" />
+            <PropertyRef Name="RID" />
+            <PropertyRef Name="AID" />
+          </Key>
+          <Property Name="PID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="SID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="RID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="AID" Type="number" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DOCTOR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="RESIDENT" Type="varchar2" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DRUG_HISTORY">
+          <Key>
+            <PropertyRef Name="PID" />
+            <PropertyRef Name="DRUG" />
+          </Key>
+          <Property Name="PID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="DRUG" Type="varchar2" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NURSE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="PRACTITIONER" Type="varchar2" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PATIENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="CONTACT_NO" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="AGE" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="GENDER" Type="varchar2" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PATIENT_HISTORY">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="PID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="WEIGHT" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="HEIGHT" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="BLOOD_TYPE" Type="varchar2" MaxLength="3" Nullable="false" />
+          <Property Name="ETHNICITY" Type="varchar2" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PREEXISTING_CONDITIONS">
+          <Key>
+            <PropertyRef Name="PID" />
+            <PropertyRef Name="CONDITION" />
+          </Key>
+          <Property Name="PID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="CONDITION" Type="varchar2" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROOM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="FLOOR" Type="number" Precision="2" Scale="0" Nullable="false" />
+          <Property Name="TYPE" Type="varchar2" MaxLength="10" Nullable="false" />
+          <Property Name="STATUS" Type="varchar2" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STAFF">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="SPECIALTY" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="GENDER" Type="varchar2" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <Association Name="SYS_C0012078">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DOCTOR">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0012082">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="NURSE" Type="Self.NURSE" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NURSE">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0012098">
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1" />
+          <End Role="ASSIGNED_FOR" Type="Self.ASSIGNED_FOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PATIENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ASSIGNED_FOR">
+              <PropertyRef Name="PID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0012099">
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="1" />
+          <End Role="ASSIGNED_FOR" Type="Self.ASSIGNED_FOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOM">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ASSIGNED_FOR">
+              <PropertyRef Name="RID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0012101">
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1" />
+          <End Role="DRUG_HISTORY" Type="Self.DRUG_HISTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PATIENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DRUG_HISTORY">
+              <PropertyRef Name="PID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0012103">
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1" />
+          <End Role="PREEXISTING_CONDITIONS" Type="Self.PREEXISTING_CONDITIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PATIENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PREEXISTING_CONDITIONS">
+              <PropertyRef Name="PID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0012105">
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1" />
+          <End Role="ATTENDS" Type="Self.ATTENDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PATIENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ATTENDS">
+              <PropertyRef Name="PID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0012106">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="ATTENDS" Type="Self.ATTENDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ATTENDS">
+              <PropertyRef Name="SID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0012107">
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="1" />
+          <End Role="ATTENDS" Type="Self.ATTENDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOM">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ATTENDS">
+              <PropertyRef Name="RID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0012108">
+          <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="1" />
+          <End Role="ATTENDS" Type="Self.ATTENDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APPOINTMENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ATTENDS">
+              <PropertyRef Name="AID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="APPOINTMENT" EntityType="Self.APPOINTMENT" Schema="SCOTT" store:Type="Tables" />
+          <EntitySet Name="ASSIGNED_FOR" EntityType="Self.ASSIGNED_FOR" Schema="SCOTT" store:Type="Tables" />
+          <EntitySet Name="ATTENDS" EntityType="Self.ATTENDS" Schema="SCOTT" store:Type="Tables" />
+          <EntitySet Name="DOCTOR" EntityType="Self.DOCTOR" Schema="SCOTT" store:Type="Tables" />
+          <EntitySet Name="DRUG_HISTORY" EntityType="Self.DRUG_HISTORY" Schema="SCOTT" store:Type="Tables" />
+          <EntitySet Name="NURSE" EntityType="Self.NURSE" Schema="SCOTT" store:Type="Tables" />
+          <EntitySet Name="PATIENT" EntityType="Self.PATIENT" Schema="SCOTT" store:Type="Tables" />
+          <EntitySet Name="PATIENT_HISTORY" EntityType="Self.PATIENT_HISTORY" Schema="SCOTT" store:Type="Tables" />
+          <EntitySet Name="PREEXISTING_CONDITIONS" EntityType="Self.PREEXISTING_CONDITIONS" Schema="SCOTT" store:Type="Tables" />
+          <EntitySet Name="ROOM" EntityType="Self.ROOM" Schema="SCOTT" store:Type="Tables" />
+          <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="SCOTT" store:Type="Tables" />
+          <AssociationSet Name="SYS_C0012078" Association="Self.SYS_C0012078">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="DOCTOR" EntitySet="DOCTOR" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0012082" Association="Self.SYS_C0012082">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="NURSE" EntitySet="NURSE" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0012098" Association="Self.SYS_C0012098">
+            <End Role="PATIENT" EntitySet="PATIENT" />
+            <End Role="ASSIGNED_FOR" EntitySet="ASSIGNED_FOR" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0012099" Association="Self.SYS_C0012099">
+            <End Role="ROOM" EntitySet="ROOM" />
+            <End Role="ASSIGNED_FOR" EntitySet="ASSIGNED_FOR" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0012101" Association="Self.SYS_C0012101">
+            <End Role="PATIENT" EntitySet="PATIENT" />
+            <End Role="DRUG_HISTORY" EntitySet="DRUG_HISTORY" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0012103" Association="Self.SYS_C0012103">
+            <End Role="PATIENT" EntitySet="PATIENT" />
+            <End Role="PREEXISTING_CONDITIONS" EntitySet="PREEXISTING_CONDITIONS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0012105" Association="Self.SYS_C0012105">
+            <End Role="PATIENT" EntitySet="PATIENT" />
+            <End Role="ATTENDS" EntitySet="ATTENDS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0012106" Association="Self.SYS_C0012106">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="ATTENDS" EntitySet="ATTENDS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0012107" Association="Self.SYS_C0012107">
+            <End Role="ROOM" EntitySet="ROOM" />
+            <End Role="ATTENDS" EntitySet="ATTENDS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0012108" Association="Self.SYS_C0012108">
+            <End Role="APPOINTMENT" EntitySet="APPOINTMENT" />
+            <End Role="ATTENDS" EntitySet="ATTENDS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="APPOINTMENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ATIME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADATE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FEES" Type="Int16" Nullable="false" />
+          <Property Name="TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ATTENDS" Relationship="Self.SYS_C0012108" FromRole="APPOINTMENT" ToRole="ATTENDS" />
+        </EntityType>
+        <EntityType Name="ATTEND">
+          <Key>
+            <PropertyRef Name="PID" />
+            <PropertyRef Name="SID" />
+            <PropertyRef Name="RID" />
+            <PropertyRef Name="AID" />
+          </Key>
+          <Property Name="PID" Type="Int32" Nullable="false" />
+          <Property Name="SID" Type="Int16" Nullable="false" />
+          <Property Name="RID" Type="Int16" Nullable="false" />
+          <Property Name="AID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="APPOINTMENT" Relationship="Self.SYS_C0012108" FromRole="ATTENDS" ToRole="APPOINTMENT" />
+          <NavigationProperty Name="PATIENT" Relationship="Self.SYS_C0012105" FromRole="ATTENDS" ToRole="PATIENT" />
+          <NavigationProperty Name="STAFF" Relationship="Self.SYS_C0012106" FromRole="ATTENDS" ToRole="STAFF" />
+          <NavigationProperty Name="ROOM" Relationship="Self.SYS_C0012107" FromRole="ATTENDS" ToRole="ROOM" />
+        </EntityType>
+        <EntityType Name="DOCTOR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" />
+          <Property Name="RESIDENT" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="STAFF" Relationship="Self.SYS_C0012078" FromRole="DOCTOR" ToRole="STAFF" />
+        </EntityType>
+        <EntityType Name="DRUG_HISTORY">
+          <Key>
+            <PropertyRef Name="PID" />
+            <PropertyRef Name="DRUG" />
+          </Key>
+          <Property Name="PID" Type="Int32" Nullable="false" />
+          <Property Name="DRUG" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PATIENT" Relationship="Self.SYS_C0012101" FromRole="DRUG_HISTORY" ToRole="PATIENT" />
+        </EntityType>
+        <EntityType Name="NURSE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" />
+          <Property Name="PRACTITIONER" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="STAFF" Relationship="Self.SYS_C0012082" FromRole="NURSE" ToRole="STAFF" />
+        </EntityType>
+        <EntityType Name="PATIENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CONTACT_NO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AGE" Type="Int16" Nullable="false" />
+          <Property Name="GENDER" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ATTENDS" Relationship="Self.SYS_C0012105" FromRole="PATIENT" ToRole="ATTENDS" />
+          <NavigationProperty Name="DRUG_HISTORY" Relationship="Self.SYS_C0012101" FromRole="PATIENT" ToRole="DRUG_HISTORY" />
+          <NavigationProperty Name="PREEXISTING_CONDITIONS" Relationship="Self.SYS_C0012103" FromRole="PATIENT" ToRole="PREEXISTING_CONDITIONS" />
+          <NavigationProperty Name="ROOMs" Relationship="Self.ASSIGNED_FOR" FromRole="PATIENT" ToRole="ROOM" />
+        </EntityType>
+        <EntityType Name="PATIENT_HISTORY">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="PID" Type="Int32" Nullable="false" />
+          <Property Name="WEIGHT" Type="Int16" Nullable="false" />
+          <Property Name="HEIGHT" Type="Int16" Nullable="false" />
+          <Property Name="BLOOD_TYPE" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ETHNICITY" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PREEXISTING_CONDITIONS">
+          <Key>
+            <PropertyRef Name="PID" />
+            <PropertyRef Name="CONDITION" />
+          </Key>
+          <Property Name="PID" Type="Int32" Nullable="false" />
+          <Property Name="CONDITION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PATIENT" Relationship="Self.SYS_C0012103" FromRole="PREEXISTING_CONDITIONS" ToRole="PATIENT" />
+        </EntityType>
+        <EntityType Name="ROOM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" />
+          <Property Name="FLOOR" Type="Int16" Nullable="false" />
+          <Property Name="TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ATTENDS" Relationship="Self.SYS_C0012107" FromRole="ROOM" ToRole="ATTENDS" />
+          <NavigationProperty Name="PATIENTs" Relationship="Self.ASSIGNED_FOR" FromRole="ROOM" ToRole="PATIENT" />
+        </EntityType>
+        <EntityType Name="STAFF">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SPECIALTY" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GENDER" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ATTENDS" Relationship="Self.SYS_C0012106" FromRole="STAFF" ToRole="ATTENDS" />
+          <NavigationProperty Name="DOCTOR" Relationship="Self.SYS_C0012078" FromRole="STAFF" ToRole="DOCTOR" />
+          <NavigationProperty Name="NURSE" Relationship="Self.SYS_C0012082" FromRole="STAFF" ToRole="NURSE" />
+        </EntityType>
+        <Association Name="SYS_C0012108">
+          <End Role="APPOINTMENT" Type="Self.APPOINTMENT" Multiplicity="1" />
+          <End Role="ATTENDS" Type="Self.ATTEND" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="APPOINTMENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ATTENDS">
+              <PropertyRef Name="AID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0012105">
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1" />
+          <End Role="ATTENDS" Type="Self.ATTEND" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PATIENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ATTENDS">
+              <PropertyRef Name="PID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0012106">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="ATTENDS" Type="Self.ATTEND" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ATTENDS">
+              <PropertyRef Name="SID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0012107">
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="1" />
+          <End Role="ATTENDS" Type="Self.ATTEND" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROOM">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ATTENDS">
+              <PropertyRef Name="RID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0012078">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DOCTOR">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0012101">
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1" />
+          <End Role="DRUG_HISTORY" Type="Self.DRUG_HISTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PATIENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DRUG_HISTORY">
+              <PropertyRef Name="PID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0012082">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="NURSE" Type="Self.NURSE" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NURSE">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0012103">
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="1" />
+          <End Role="PREEXISTING_CONDITIONS" Type="Self.PREEXISTING_CONDITIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PATIENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PREEXISTING_CONDITIONS">
+              <PropertyRef Name="PID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ASSIGNED_FOR">
+          <End Role="PATIENT" Type="Self.PATIENT" Multiplicity="*" />
+          <End Role="ROOM" Type="Self.ROOM" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="APPOINTMENTs" EntityType="Self.APPOINTMENT" />
+          <EntitySet Name="ATTENDS" EntityType="Self.ATTEND" />
+          <EntitySet Name="DOCTORs" EntityType="Self.DOCTOR" />
+          <EntitySet Name="DRUG_HISTORY" EntityType="Self.DRUG_HISTORY" />
+          <EntitySet Name="NURSEs" EntityType="Self.NURSE" />
+          <EntitySet Name="PATIENTs" EntityType="Self.PATIENT" />
+          <EntitySet Name="PATIENT_HISTORY" EntityType="Self.PATIENT_HISTORY" />
+          <EntitySet Name="PREEXISTING_CONDITIONS" EntityType="Self.PREEXISTING_CONDITIONS" />
+          <EntitySet Name="ROOMs" EntityType="Self.ROOM" />
+          <EntitySet Name="STAFFs" EntityType="Self.STAFF" />
+          <AssociationSet Name="SYS_C0012108" Association="Self.SYS_C0012108">
+            <End Role="APPOINTMENT" EntitySet="APPOINTMENTs" />
+            <End Role="ATTENDS" EntitySet="ATTENDS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0012105" Association="Self.SYS_C0012105">
+            <End Role="PATIENT" EntitySet="PATIENTs" />
+            <End Role="ATTENDS" EntitySet="ATTENDS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0012106" Association="Self.SYS_C0012106">
+            <End Role="STAFF" EntitySet="STAFFs" />
+            <End Role="ATTENDS" EntitySet="ATTENDS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0012107" Association="Self.SYS_C0012107">
+            <End Role="ROOM" EntitySet="ROOMs" />
+            <End Role="ATTENDS" EntitySet="ATTENDS" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0012078" Association="Self.SYS_C0012078">
+            <End Role="STAFF" EntitySet="STAFFs" />
+            <End Role="DOCTOR" EntitySet="DOCTORs" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0012101" Association="Self.SYS_C0012101">
+            <End Role="PATIENT" EntitySet="PATIENTs" />
+            <End Role="DRUG_HISTORY" EntitySet="DRUG_HISTORY" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0012082" Association="Self.SYS_C0012082">
+            <End Role="STAFF" EntitySet="STAFFs" />
+            <End Role="NURSE" EntitySet="NURSEs" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0012103" Association="Self.SYS_C0012103">
+            <End Role="PATIENT" EntitySet="PATIENTs" />
+            <End Role="PREEXISTING_CONDITIONS" EntitySet="PREEXISTING_CONDITIONS" />
+          </AssociationSet>
+          <AssociationSet Name="ASSIGNED_FOR" Association="Self.ASSIGNED_FOR">
+            <End Role="PATIENT" EntitySet="PATIENTs" />
+            <End Role="ROOM" EntitySet="ROOMs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="APPOINTMENTs">
+            <EntityTypeMapping TypeName="Model.APPOINTMENT">
+              <MappingFragment StoreEntitySet="APPOINTMENT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ATIME" ColumnName="ATIME" />
+                <ScalarProperty Name="ADATE" ColumnName="ADATE" />
+                <ScalarProperty Name="FEES" ColumnName="FEES" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ATTENDS">
+            <EntityTypeMapping TypeName="Model.ATTEND">
+              <MappingFragment StoreEntitySet="ATTENDS">
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="RID" ColumnName="RID" />
+                <ScalarProperty Name="AID" ColumnName="AID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOCTORs">
+            <EntityTypeMapping TypeName="Model.DOCTOR">
+              <MappingFragment StoreEntitySet="DOCTOR">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RESIDENT" ColumnName="RESIDENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DRUG_HISTORY">
+            <EntityTypeMapping TypeName="Model.DRUG_HISTORY">
+              <MappingFragment StoreEntitySet="DRUG_HISTORY">
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="DRUG" ColumnName="DRUG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NURSEs">
+            <EntityTypeMapping TypeName="Model.NURSE">
+              <MappingFragment StoreEntitySet="NURSE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PRACTITIONER" ColumnName="PRACTITIONER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PATIENTs">
+            <EntityTypeMapping TypeName="Model.PATIENT">
+              <MappingFragment StoreEntitySet="PATIENT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="CONTACT_NO" ColumnName="CONTACT_NO" />
+                <ScalarProperty Name="AGE" ColumnName="AGE" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PATIENT_HISTORY">
+            <EntityTypeMapping TypeName="Model.PATIENT_HISTORY">
+              <MappingFragment StoreEntitySet="PATIENT_HISTORY">
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="WEIGHT" ColumnName="WEIGHT" />
+                <ScalarProperty Name="HEIGHT" ColumnName="HEIGHT" />
+                <ScalarProperty Name="BLOOD_TYPE" ColumnName="BLOOD_TYPE" />
+                <ScalarProperty Name="ETHNICITY" ColumnName="ETHNICITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PREEXISTING_CONDITIONS">
+            <EntityTypeMapping TypeName="Model.PREEXISTING_CONDITIONS">
+              <MappingFragment StoreEntitySet="PREEXISTING_CONDITIONS">
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="CONDITION" ColumnName="CONDITION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROOMs">
+            <EntityTypeMapping TypeName="Model.ROOM">
+              <MappingFragment StoreEntitySet="ROOM">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FLOOR" ColumnName="FLOOR" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STAFFs">
+            <EntityTypeMapping TypeName="Model.STAFF">
+              <MappingFragment StoreEntitySet="STAFF">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="SPECIALTY" ColumnName="SPECIALTY" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ASSIGNED_FOR" TypeName="Model.ASSIGNED_FOR" StoreEntitySet="ASSIGNED_FOR">
+            <EndProperty Name="PATIENT">
+              <ScalarProperty Name="ID" ColumnName="PID" />
+            </EndProperty>
+            <EndProperty Name="ROOM">
+              <ScalarProperty Name="ID" ColumnName="RID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -26,17 +26,33 @@ namespace University_Hospital_Management_System.ProjectForms
 
             cmd.Parameters.Add("roomID", roomID_txt.Text);
             OracleParameter floorNoParam = cmd.Parameters.Add("floorNo", OracleDbType.Int32, ParameterDirection.Output);
-            int result = cmd.ExecuteNonQuery();
+            //int result = cmd.ExecuteNonQuery();
 
-            if (result == -1)
+            //if (result == -1)
+            //{
+            //    floorNo_txt.Text = floorNoParam.Value.ToString();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("No room found. Enter an existing ID", "Nothing found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+
+            try
             {
+                cmd.ExecuteNonQuery();
                 floorNo_txt.Text = floorNoParam.Value.ToString();
             }
-            else
+            catch (Exception ex)
             {
                 MessageBox.Show("No room found. Enter an existing ID", "Nothing found", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+
+        }
+
+        private void roomID_txt_TextChanged(object sender, EventArgs e)
+        {
+            floorNo_txt.Clear();
         }
     }
 }

@@ -53,6 +53,7 @@
             this.roomID_txt.Name = "roomID_txt";
             this.roomID_txt.Size = new System.Drawing.Size(141, 29);
             this.roomID_txt.TabIndex = 1;
+            this.roomID_txt.TextChanged += new System.EventHandler(this.roomID_txt_TextChanged);
             // 
             // floorNo_txt
             // 
