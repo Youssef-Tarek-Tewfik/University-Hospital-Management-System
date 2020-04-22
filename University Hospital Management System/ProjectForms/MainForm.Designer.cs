@@ -32,6 +32,7 @@
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findFloorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.viewUserData_btn = new System.Windows.Forms.Button();
             this.showPatientsData_btn = new System.Windows.Forms.Button();
@@ -78,7 +79,6 @@
             this.showAppointments_btn = new System.Windows.Forms.Button();
             this.viewReports_btn = new System.Windows.Forms.Button();
             this.reportsComboBox = new System.Windows.Forms.ComboBox();
-            this.findFloorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.patientsDataPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGridView)).BeginInit();
@@ -120,6 +120,13 @@
             this.deleteAccountToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.deleteAccountToolStripMenuItem.Text = "Delete Account";
             this.deleteAccountToolStripMenuItem.Click += new System.EventHandler(this.deleteAccountToolStripMenuItem_Click);
+            // 
+            // findFloorToolStripMenuItem
+            // 
+            this.findFloorToolStripMenuItem.Name = "findFloorToolStripMenuItem";
+            this.findFloorToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.findFloorToolStripMenuItem.Text = "Find Floor #";
+            this.findFloorToolStripMenuItem.Click += new System.EventHandler(this.findFloorToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -594,18 +601,13 @@
             // 
             this.reportsComboBox.FormattingEnabled = true;
             this.reportsComboBox.Items.AddRange(new object[] {
-            "Appointments"});
+            "Appointments",
+            "Staff",
+            "Patients"});
             this.reportsComboBox.Location = new System.Drawing.Point(17, 479);
             this.reportsComboBox.Name = "reportsComboBox";
             this.reportsComboBox.Size = new System.Drawing.Size(148, 21);
             this.reportsComboBox.TabIndex = 11;
-            // 
-            // findFloorToolStripMenuItem
-            // 
-            this.findFloorToolStripMenuItem.Name = "findFloorToolStripMenuItem";
-            this.findFloorToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
-            this.findFloorToolStripMenuItem.Text = "Find Floor #";
-            this.findFloorToolStripMenuItem.Click += new System.EventHandler(this.findFloorToolStripMenuItem_Click);
             // 
             // MainForm
             // 

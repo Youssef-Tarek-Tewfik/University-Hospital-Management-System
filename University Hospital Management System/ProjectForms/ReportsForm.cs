@@ -9,6 +9,7 @@ namespace University_Hospital_Management_System.ProjectForms
     {
         string ReportName;
         AppointmentsReport appointmentsReport;
+        StaffReport staffReport;
 
         public ReportsForm(string reportName)
         {
@@ -32,11 +33,12 @@ namespace University_Hospital_Management_System.ProjectForms
 
                     break;
 
-                //case "":
-                //    panel1.Visible = true; break;
+                case "Staff":
+                    staffReport = new StaffReport();
+                    break;
 
-                //case "":
-                //    panel1.Visible = true; break;
+                case "Patients":
+                    break;
 
                 default:
                     break;
@@ -54,14 +56,17 @@ namespace University_Hospital_Management_System.ProjectForms
                         appointmentsReport.SetParameterValue(0, appointmentTypeComboBox.SelectedItem.ToString());
                     }
 
+                    appointmentsReport.SetParameterValue(1, startDatePicker.Value.ToShortDateString());
+                    appointmentsReport.SetParameterValue(2, endDatePicker.Value.ToShortDateString());
                     crystalReportViewer.ReportSource = appointmentsReport;
                     break;
 
-                //case "":
-                //    panel1.Visible = true; break;
+                case "Staff":
+                    crystalReportViewer.ReportSource = staffReport;
+                    break;
 
-                //case "":
-                //    panel1.Visible = true; break;
+                case "Patients":
+                    break;
 
                 default:
                     break;

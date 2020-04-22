@@ -16,14 +16,14 @@ namespace University_Hospital_Management_System.ProjectReports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class AppointmentsReport : ReportClass {
+    public class StaffReport : ReportClass {
         
-        public AppointmentsReport() {
+        public StaffReport() {
         }
         
         public override string ResourceName {
             get {
-                return "AppointmentsReport.rpt";
+                return "StaffReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace University_Hospital_Management_System.ProjectReports {
         
         public override string FullResourceName {
             get {
-                return "University_Hospital_Management_System.ProjectReports.AppointmentsReport.rpt";
+                return "University_Hospital_Management_System.ProjectReports.StaffReport.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace University_Hospital_Management_System.ProjectReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace University_Hospital_Management_System.ProjectReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,7 +82,7 @@ namespace University_Hospital_Management_System.ProjectReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
             get {
                 return this.ReportDefinition.Sections[4];
             }
@@ -90,33 +90,25 @@ namespace University_Hospital_Management_System.ProjectReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_AppointmentStatus_Parameter {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
-                return this.DataDefinition.ParameterFields[0];
+                return this.ReportDefinition.Sections[5];
             }
         }
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_StartDate_Paramater {
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.DataDefinition.ParameterFields[1];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_EndDate_Parameter {
-            get {
-                return this.DataDefinition.ParameterFields[2];
+                return this.ReportDefinition.Sections[6];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedAppointmentsReport : Component, ICachedReport {
+    public class CachedStaffReport : Component, ICachedReport {
         
-        public CachedAppointmentsReport() {
+        public CachedStaffReport() {
         }
         
         [Browsable(false)]
@@ -153,7 +145,7 @@ namespace University_Hospital_Management_System.ProjectReports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            AppointmentsReport rpt = new AppointmentsReport();
+            StaffReport rpt = new StaffReport();
             rpt.Site = this.Site;
             return rpt;
         }

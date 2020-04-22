@@ -28,6 +28,7 @@ namespace University_Hospital_Management_System.ProjectForms
         private void AuthForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             OrclDatabase.conn.Close();
+            OrclDatabase.conn.Dispose();
         }
 
         private void registrationLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
